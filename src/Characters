@@ -1,0 +1,21 @@
+Example, skriv bara ett värde inte mer:
+name
+description
+weapon (namn på vapnet)
+armor
+maxHealth (default: 100)
+currentHealth (default: same as max)
+strength (För alla skills, den här och nedan. default är 4, max är 10. Flesta characters har totalt 12 poäng)
+technique
+aim
+hunger (inte en skill, default: 100)
+
+Bob
+Short and dumb but very strong, his eyes are way too far apart and a tad small just like his brain.
+Axe Bodyspray Dark Temptation
+Null
+200
+200
+7
+2
+2

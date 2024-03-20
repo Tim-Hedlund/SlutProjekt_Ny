@@ -1,5 +1,6 @@
 public class Character {
     String name;
+    String description;
     Weapon weapon;
     Armor armor;
     int maxHealth;
@@ -10,9 +11,10 @@ public class Character {
     int hunger;
     float currentHunger;
 
-    Character (String name, int maxHealth, int strength, int technique, int aim, int hunger, Weapon weapon, Armor armor) {
+    Character (String name, String description, int maxHealth, int strength, int technique, int aim, int hunger, Weapon weapon, Armor armor) {
 
         this.name = name;
+        this.description = description;
         this.maxHealth = maxHealth;
         this.strength = strength;
         this.technique = technique;
