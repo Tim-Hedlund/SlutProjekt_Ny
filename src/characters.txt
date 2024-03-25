@@ -11,7 +11,7 @@ aim
 hunger (inte en skill, default: 100)
 
 Bob
-Short and dumb but very strong, his eyes are way too far apart and a tad small just like his brain.
+Short and dumb but very strong, his eyes are too far apart and a tad small just like his brain.
 Axe Bodyspray Dark Temptation
 Null
 200
