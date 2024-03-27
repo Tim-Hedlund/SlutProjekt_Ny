@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Började med hur alla objekt ska skapas">
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Skapade ett system för att hantera filer lätt, Det kommer sen användas för att spara spelet och skapa karaktärer genom en textfil.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Characters" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileMaster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input/InputChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/InputChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/characters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +65,8 @@
       <workItem from="1710145591618" duration="1072000" />
       <workItem from="1710448918143" duration="1116000" />
       <workItem from="1710604649794" duration="10234000" />
-      <workItem from="1710925768069" duration="11356000" />
+      <workItem from="1710925768069" duration="12874000" />
+      <workItem from="1711440371947" duration="5437000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -79,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710929066368</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Skapade ett system för att hantera filer lätt, Det kommer sen användas för att spara spelet och skapa karaktärer genom en textfil.">
+      <created>1711355979993</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711355979993</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,6 +98,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Layed out start of many classes and implemented an input checking system" />
     <MESSAGE value="Började med hur alla objekt ska skapas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Började med hur alla objekt ska skapas" />
+    <MESSAGE value="Skapade ett system för att hantera filer lätt, Det kommer sen användas för att spara spelet och skapa karaktärer genom en textfil." />
+    <option name="LAST_COMMIT_MESSAGE" value="Skapade ett system för att hantera filer lätt, Det kommer sen användas för att spara spelet och skapa karaktärer genom en textfil." />
   </component>
 </project>

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileMaster {
@@ -7,6 +8,67 @@ public class FileMaster {
 
     FileMaster(File file) {
         this.file = file;
+    }
+
+    ArrayList<String> returnParagraphStringList (int paragraphNum) {
+
+        String returnString = "";
+
+        try{
+            Scanner fileReader = new Scanner(this.file);
+            int rowNum = getParagraphRow(paragraphNum);
+
+            skipLines(fileReader, rowNum);
+
+            while (true) {
+
+                String currentLine = fileReader.nextLine();
+
+                if (currentLine.length() != 0) {
+
+                    returnString = returnString + "," + currentLine;
+
+                } else {
+                    break;
+                }
+
+            }
+            fileReader.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error,");
+            e.printStackTrace();
+        }
+
+        return returnString;
+
+    }
+
+    int getFileParagraphCount(){
+
+        try{
+            Scanner fileReader = new Scanner(this.file);
+
+            int paragraphCount = 0;
+
+            while(fileReader.hasNextLine()) {
+
+                if (fileReader.nextLine().equals("")) {
+                    paragraphCount += 1;
+                }
+
+            }
+            fileReader.close();
+
+            return (paragraphCount);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error,");
+            e.printStackTrace();
+            return -1;
+        }
+
+
     }
 
     String returnLine (int lineNumber) { //returnerar värdet vid en line av en fil
@@ -78,7 +140,7 @@ public class FileMaster {
                 while (true) {
                     rowNum ++;
 
-                    if (fileReader.nextLine().length() == 0) {
+                    if (!fileReader.hasNextLine() || (fileReader.nextLine().length() == 0))  {
                         break;
                     }
 
@@ -103,9 +165,7 @@ public class FileMaster {
     void skipLines(Scanner scanner, int lines) {
 
         for (int i = 0; i < lines; i++) {
-
             scanner.nextLine();
-
         }
 
     }

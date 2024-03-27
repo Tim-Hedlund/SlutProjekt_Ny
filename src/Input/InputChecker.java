@@ -2,7 +2,7 @@ package Input;
 
 public class InputChecker {
 
-    InputChecker() {}
+    public InputChecker() {}
 
     int toInt (String input) { //input checker för integers, returnerar -1 när den inte är integer
         int intInput;
