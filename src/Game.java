@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Game {
     InputMaster input = new InputMaster();
     Team team;
-    ArrayList<Character> allCharacters = new ArrayList<>();
-    ArrayList<Weapon> allWeapons = new ArrayList<>();
+    ArrayList<Character> allCharacters;
+    ArrayList<Weapon> allWeapons;
 
     Game () {
 
@@ -14,7 +14,8 @@ public class Game {
 
         ObjectBuilder objectBuilder = new ObjectBuilder();
 
-        allCharacters = objectBuilder.returnCharacters();
+        allWeapons = objectBuilder.returnWeapons();
+        allCharacters = objectBuilder.returnCharacters(allWeapons);
 
         startGame();
 

@@ -4,7 +4,7 @@ public class InputChecker {
 
     public InputChecker() {}
 
-    int toInt (String input) { //input checker för integers, returnerar -1 när den inte är integer
+    public int toInt (String input) { //input checker för integers, returnerar -1 när den inte är integer
         int intInput;
 
         try {

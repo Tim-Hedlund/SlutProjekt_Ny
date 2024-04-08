@@ -12,7 +12,7 @@ public class FileMaster {
 
     ArrayList<String> returnParagraphStringList (int paragraphNum) {
 
-        String returnString = "";
+        ArrayList<String> returnList = new ArrayList<>();
 
         try{
             Scanner fileReader = new Scanner(this.file);
@@ -26,7 +26,7 @@ public class FileMaster {
 
                 if (currentLine.length() != 0) {
 
-                    returnString = returnString + "," + currentLine;
+                    returnList.add(currentLine);
 
                 } else {
                     break;
@@ -40,7 +40,7 @@ public class FileMaster {
             e.printStackTrace();
         }
 
-        return returnString;
+        return returnList;
 
     }
 
