@@ -9,25 +9,53 @@ public class ObjectBuilder {
 
     ArrayList<Weapon> returnWeapons() {
 
-        File weaponFile = new File("src/weaponRanged.txt");
-        FileMaster weaponFileMaster = new FileMaster(weaponFile);
+        File rangedWeaponFile = new File("src/weaponRanged.txt");
+        FileMaster rangedWeaponFileMaster = new FileMaster(rangedWeaponFile);
 
         InputChecker inputChecker = new InputChecker();
 
         ArrayList<Weapon> weapons = new ArrayList<>();
-        ArrayList<String> currentWeaponData = new ArrayList<>();
+        ArrayList<String> currentWeaponData;
 
-        int paragraphCount = weaponFileMaster.getFileParagraphCount();
+        int paragraphCount = rangedWeaponFileMaster.getFileParagraphCount();
 
         for (int i = 0; i < paragraphCount; i++) {
 
-            currentWeaponData = weaponFileMaster.returnParagraphStringList(i);
+            currentWeaponData = rangedWeaponFileMaster.returnParagraphStringList(i);
 
-            weapons.add(returnSingleWeapon(currentWeaponData, inputChecker));
+            weapons.add(returnSingleWeapon(currentWeaponData, inputChecker, true)); //ranged weapons
+
+        }
+
+        File meleeWeaponFile = new File("src/weaponMelee.txt");
+        FileMaster meleeWeaponFileMaster = new FileMaster(meleeWeaponFile);
+
+        paragraphCount = meleeWeaponFileMaster.getFileParagraphCount();
+
+        for (int i = 0; i < paragraphCount; i++) {
+
+            currentWeaponData = meleeWeaponFileMaster.returnParagraphStringList(i);
+
+            weapons.add(returnSingleWeapon(currentWeaponData, inputChecker, false)); //melee weapons
 
         }
 
         return weapons;
+
+    }
+
+    ArrayList<Armor> returnArmors() {
+
+        File armorFile = new File("src/armors.txt");
+        FileMaster armorFileMaster = new FileMaster(armorFile);
+
+        InputChecker inputChecker = new InputChecker();
+
+        ArrayList<Armor> armors = new ArrayList<>();
+
+        ArrayList<String> currentArmorData;
+
+        int paragraphCount = armorFileMaster.getFileParagraphCount();
 
     }
 
@@ -39,7 +67,6 @@ public class ObjectBuilder {
         InputChecker inputChecker = new InputChecker();
 
         ArrayList<Character> characters = new ArrayList<>();
-        ArrayList<Armor> armors = new ArrayList<>();
 
         ArrayList<String> currentCharacterData;
 
@@ -57,9 +84,9 @@ public class ObjectBuilder {
 
     }
 
-    private Weapon returnSingleWeapon(ArrayList<String> currentWeaponData, InputChecker inputChecker) {
+    private Weapon returnSingleWeapon(ArrayList<String> currentWeaponData, InputChecker inputChecker, boolean isRanged) {
 
-        if (currentWeaponData.size() == 9) {
+        if (currentWeaponData.size() == 8) {
 
             String name = currentWeaponData.get(0);
             String damagePerShotString = currentWeaponData.get(1);
@@ -67,16 +94,59 @@ public class ObjectBuilder {
             String critMultiplierString = currentWeaponData.get(3);
             String critChanceString = currentWeaponData.get(4);
 
+
             int damagePerShot = inputChecker.toInt(damagePerShotString);
             int shots = inputChecker.toInt(shotsString);
             float critMultiplier = inputChecker.toFloat(critMultiplierString);
             float critChance = inputChecker.toFloat(critChanceString);
 
-            return new Ranged(name, damagePerShot, shots, critMultiplier, critChance);
+            if (isRanged) {
 
+                return returnSingleRangedWeapon(name, damagePerShot, shots, critMultiplier, critChance, currentWeaponData, inputChecker);
+
+            } else {
+
+                return returnSingleMeleeWeapon(name, damagePerShot, shots, critMultiplier, critChance, currentWeaponData, inputChecker);
+
+            }
+
+        } else {
+
+            System.out.println("Error,");
+            System.out.println("Incorrect data length");
+
+            return null;
 
         }
 
+
+    }
+
+    private Weapon returnSingleRangedWeapon(String name, int damagePerShot, int shots, float critMultiplier, float critChance, ArrayList<String> currentWeaponData, InputChecker inputChecker) {
+
+        String aimMultiplierString = currentWeaponData.get(5);
+        String accuracyLossPerRangeString = currentWeaponData.get(6);
+        String damageLossPerRangeString = currentWeaponData.get(7);
+
+        float aimMultiplier = inputChecker.toFloat(aimMultiplierString);
+        float accuracyLossPerRange = inputChecker.toFloat(accuracyLossPerRangeString);
+        float damageLossPerRange = inputChecker.toFloat(damageLossPerRangeString);
+
+        return new Ranged(name, damagePerShot, shots, critMultiplier, critChance, aimMultiplier, accuracyLossPerRange, damageLossPerRange);
+
+    }
+
+    private Weapon returnSingleMeleeWeapon(String name, int damagePerShot, int shots, float critMultiplier, float critChance, ArrayList<String> currentWeaponData, InputChecker inputChecker) {
+
+        String techniqueMultiplierString = currentWeaponData.get(5);
+        String strengthMultiplierString = currentWeaponData.get(6);
+        String hitChanceString = currentWeaponData.get(7);
+
+        float techniqueMultiplier = inputChecker.toFloat(techniqueMultiplierString);
+        float strengthMultiplier = inputChecker.toFloat(strengthMultiplierString);
+        float hitChance = inputChecker.toFloat(hitChanceString);
+
+        return new Melee(name, damagePerShot, shots, critMultiplier, critChance, techniqueMultiplier, strengthMultiplier, hitChance);
 
     }
 

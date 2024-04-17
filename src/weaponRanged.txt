@@ -3,10 +3,16 @@ String name;
 int damagePerShot;
 int shots;
 float critMultiplier;
-float critChance;
+float critChance; Above same for all weapons
+float aimMultiplier;
+float accuracyLossPerRange;
+float damageLossPerRange;
 
 Gun
 10
 2
 20
 0.25
+2
+1
+2

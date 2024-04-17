@@ -1,0 +1,19 @@
+Example, skriv bara ett värde inte mer:
+String name;
+int damagePerShot;
+int shots;
+float critMultiplier;
+float critChance; Above same for all weapons
+float techniqueMultiplier;
+float strengthMultiplier;
+float hitChance;
+
+Knife
+15
+2
+20
+0.25
+2
+2
+2
+

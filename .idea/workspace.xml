@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Fortsatte med att skapa objekt 2">
-      <change afterPath="$PROJECT_DIR$/src/weaponRanged.txt" afterDir="false" />
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Fortsatte med att skapa objekt 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input/InputChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/InputChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Melee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Melee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ranged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ranged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapons.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/weaponMelee.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/weaponMelee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/weaponMelee.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/weaponRanged.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/weaponRanged.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,8 @@
       <workItem from="1710925768069" duration="12874000" />
       <workItem from="1711440371947" duration="5518000" />
       <workItem from="1712558553945" duration="3639000" />
-      <workItem from="1713340716965" duration="3808000" />
+      <workItem from="1713340716965" duration="3831000" />
+      <workItem from="1713359865107" duration="1843000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -106,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712562194806</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fortsatte med att skapa objekt 3">
+      <created>1713344786337</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713344786337</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +125,7 @@
     <MESSAGE value="Skapade ett system för att hantera filer lätt, Det kommer sen användas för att spara spelet och skapa karaktärer genom en textfil." />
     <MESSAGE value="Fortsatte med att skapa objekt" />
     <MESSAGE value="Fortsatte med att skapa objekt 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fortsatte med att skapa objekt 2" />
+    <MESSAGE value="Fortsatte med att skapa objekt 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fortsatte med att skapa objekt 3" />
   </component>
 </project>
