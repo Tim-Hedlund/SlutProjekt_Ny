@@ -1,0 +1,12 @@
+Example, skriv bara ett värde inte mer:
+String name;
+int damagePerShot;
+int shots;
+float critMultiplier;
+float critChance;
+
+Gun
+10
+2
+20
+0.25

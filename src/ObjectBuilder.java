@@ -1,4 +1,5 @@
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import Input.*;
 
@@ -8,7 +9,7 @@ public class ObjectBuilder {
 
     ArrayList<Weapon> returnWeapons() {
 
-        File weaponFile = new File("src/weapons.txt");
+        File weaponFile = new File("src/weaponRanged.txt");
         FileMaster weaponFileMaster = new FileMaster(weaponFile);
 
         InputChecker inputChecker = new InputChecker();
@@ -20,15 +21,17 @@ public class ObjectBuilder {
 
         for (int i = 0; i < paragraphCount; i++) {
 
-            weaponFileMaster = weaponFileMaster.returnParagraphStringList(i);
+            currentWeaponData = weaponFileMaster.returnParagraphStringList(i);
 
             weapons.add(returnSingleWeapon(currentWeaponData, inputChecker));
 
         }
 
+        return weapons;
+
     }
 
-    ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons) {
+    ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
 
         File charactersFile = new File("src/characters.txt");
         FileMaster characterFileMaster = new FileMaster(charactersFile);
@@ -36,6 +39,8 @@ public class ObjectBuilder {
         InputChecker inputChecker = new InputChecker();
 
         ArrayList<Character> characters = new ArrayList<>();
+        ArrayList<Armor> armors = new ArrayList<>();
+
         ArrayList<String> currentCharacterData;
 
         int paragraphCount = characterFileMaster.getFileParagraphCount();
@@ -44,7 +49,7 @@ public class ObjectBuilder {
 
             currentCharacterData = characterFileMaster.returnParagraphStringList(i);
 
-            characters.add(returnSingleCharacter(currentCharacterData, inputChecker, allWeapons));
+            characters.add(returnSingleCharacter(currentCharacterData, inputChecker, allWeapons, allArmors));
 
         }
 
@@ -52,7 +57,30 @@ public class ObjectBuilder {
 
     }
 
-    Character returnSingleCharacter(ArrayList<String> currentCharacterData, InputChecker inputChecker, ArrayList<Weapon> allWeapons) {
+    private Weapon returnSingleWeapon(ArrayList<String> currentWeaponData, InputChecker inputChecker) {
+
+        if (currentWeaponData.size() == 9) {
+
+            String name = currentWeaponData.get(0);
+            String damagePerShotString = currentWeaponData.get(1);
+            String shotsString = currentWeaponData.get(2);
+            String critMultiplierString = currentWeaponData.get(3);
+            String critChanceString = currentWeaponData.get(4);
+
+            int damagePerShot = inputChecker.toInt(damagePerShotString);
+            int shots = inputChecker.toInt(shotsString);
+            float critMultiplier = inputChecker.toFloat(critMultiplierString);
+            float critChance = inputChecker.toFloat(critChanceString);
+
+            return new Ranged(name, damagePerShot, shots, critMultiplier, critChance);
+
+
+        }
+
+
+    }
+
+    Character returnSingleCharacter(ArrayList<String> currentCharacterData, InputChecker inputChecker, ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
 
         if (currentCharacterData.size() == 9) {
 
@@ -72,10 +100,10 @@ public class ObjectBuilder {
             int technique = inputChecker.toInt(techniqueString);
             int aim = inputChecker.toInt(aimString);
 
-            Weapon weapon = allWeapons.getByName(weaponName);
+            Weapon weapon = Game.getByName(allWeapons, weaponName);
+            Armor armor = Game.getByName(allArmors, armorName);
 
-
-            Character character = new Character(name, description, maxHealth, currentHealth, strength, technique, aim, weaponName, armorName);
+            return new Character(name, description, maxHealth, currentHealth, strength, technique, aim, weapon, armor);
 
         } else {
 
@@ -88,9 +116,4 @@ public class ObjectBuilder {
 
     }
 
-    ArrayList<Weapon> returnWeapons() {
-
-
-
-    }
 }

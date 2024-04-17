@@ -1,5 +1,8 @@
 import Input.InputMaster;
 import java.io.File;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class Game {
@@ -7,6 +10,7 @@ public class Game {
     Team team;
     ArrayList<Character> allCharacters;
     ArrayList<Weapon> allWeapons;
+    ArrayList<Armor> allArmors;
 
     Game () {
 
@@ -15,10 +19,29 @@ public class Game {
         ObjectBuilder objectBuilder = new ObjectBuilder();
 
         allWeapons = objectBuilder.returnWeapons();
-        allCharacters = objectBuilder.returnCharacters(allWeapons);
+        allArmors = objectBuilder.returnArmors();
+        allCharacters = objectBuilder.returnCharacters(allWeapons, allArmors);
 
         startGame();
 
+    }
+
+    public static <T> T getByName(ArrayList<T> list, String name) {
+        for (T obj : list) {
+            try {
+                Field nameField = obj.getClass().getField("name");
+                nameField.setAccessible(true);
+
+                String objName = (String) nameField.get(obj);
+
+                if (objName.equals(name)) {
+                    return obj;
+                }
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                System.out.println("There is no item in input list with " + name + " as name");
+            }
+        }
+        return null;
     }
 
     void startGame() {
