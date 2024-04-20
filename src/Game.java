@@ -22,6 +22,16 @@ public class Game {
         allArmors = objectBuilder.returnArmors();
         allCharacters = objectBuilder.returnCharacters(allWeapons, allArmors);
 
+        for (Weapon weapon : allWeapons) {
+            System.out.println(weapon.name);
+        }
+        for (Armor armor : allArmors) {
+            System.out.println(armor.name);
+        }
+        for (Character character : allCharacters) {
+            System.out.println(character.name);
+        }
+
         startGame();
 
     }

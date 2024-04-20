@@ -5,11 +5,15 @@ import Input.*;
 
 public class ObjectBuilder {
 
+    final int PARAGRAPH_SKIP = 1;
+
+
+
     ObjectBuilder() {}
 
     ArrayList<Weapon> returnWeapons() {
 
-        File rangedWeaponFile = new File("src/weaponRanged.txt");
+        File rangedWeaponFile = new File("src/objectFileWeaponRanged.txt");
         FileMaster rangedWeaponFileMaster = new FileMaster(rangedWeaponFile);
 
         InputChecker inputChecker = new InputChecker();
@@ -18,21 +22,26 @@ public class ObjectBuilder {
         ArrayList<String> currentWeaponData;
 
         int paragraphCount = rangedWeaponFileMaster.getFileParagraphCount();
+        System.out.println(paragraphCount);
 
-        for (int i = 0; i < paragraphCount; i++) {
+        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
 
             currentWeaponData = rangedWeaponFileMaster.returnParagraphStringList(i);
+
+            for (String string : currentWeaponData) {
+                System.out.println(string);
+            }
 
             weapons.add(returnSingleWeapon(currentWeaponData, inputChecker, true)); //ranged weapons
 
         }
 
-        File meleeWeaponFile = new File("src/weaponMelee.txt");
+        File meleeWeaponFile = new File("src/objectFileWeaponMelee.txt");
         FileMaster meleeWeaponFileMaster = new FileMaster(meleeWeaponFile);
 
         paragraphCount = meleeWeaponFileMaster.getFileParagraphCount();
 
-        for (int i = 0; i < paragraphCount; i++) {
+        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
 
             currentWeaponData = meleeWeaponFileMaster.returnParagraphStringList(i);
 
@@ -46,7 +55,7 @@ public class ObjectBuilder {
 
     ArrayList<Armor> returnArmors() {
 
-        File armorFile = new File("src/armors.txt");
+        File armorFile = new File("src/objectFileArmor.txt");
         FileMaster armorFileMaster = new FileMaster(armorFile);
 
         InputChecker inputChecker = new InputChecker();
@@ -57,11 +66,48 @@ public class ObjectBuilder {
 
         int paragraphCount = armorFileMaster.getFileParagraphCount();
 
+        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
+
+            currentArmorData = armorFileMaster.returnParagraphStringList(i);
+
+            armors.add(returnSingleArmor(currentArmorData, inputChecker));
+
+        }
+
+        return armors;
+
+    }
+
+    private Armor returnSingleArmor(ArrayList<String> currentArmorData, InputChecker inputChecker) {
+
+        if (currentArmorData.size() == 5) {
+
+            String name = currentArmorData.get(0);
+            String flatDamageReductionString = currentArmorData.get(1);
+            String percentDamageReductionString = currentArmorData.get(2);
+            String reductionChanceString = currentArmorData.get(3);
+            String critReductoinChanceString = currentArmorData.get(4);
+
+            int flatDamageReduction = inputChecker.toInt(flatDamageReductionString);
+            float percentDamageReduction = inputChecker.toFloat(percentDamageReductionString);
+            float reductionChance = inputChecker.toFloat(reductionChanceString);
+            float critReductionChance = inputChecker.toFloat(critReductoinChanceString);
+
+            return new Armor(name, flatDamageReduction, percentDamageReduction, reductionChance, critReductionChance);
+
+        } else {
+
+        System.out.println("Error,");
+        System.out.println("Incorrect data length");
+
+        return null;
+        }
+
     }
 
     ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
 
-        File charactersFile = new File("src/characters.txt");
+        File charactersFile = new File("src/objectFileCharacter.txt");
         FileMaster characterFileMaster = new FileMaster(charactersFile);
 
         InputChecker inputChecker = new InputChecker();
@@ -72,7 +118,7 @@ public class ObjectBuilder {
 
         int paragraphCount = characterFileMaster.getFileParagraphCount();
 
-        for (int i = 0; i < paragraphCount; i++) {
+        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
 
             currentCharacterData = characterFileMaster.returnParagraphStringList(i);
 

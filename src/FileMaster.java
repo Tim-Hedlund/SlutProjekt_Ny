@@ -44,31 +44,47 @@ public class FileMaster {
 
     }
 
-    int getFileParagraphCount(){
-
-        try{
+    int getFileParagraphCount() {
+        try {
             Scanner fileReader = new Scanner(this.file);
 
             int paragraphCount = 0;
+            boolean isNewParagraph = true;
 
-            while(fileReader.hasNextLine()) {
+            while (fileReader.hasNextLine()) {
 
-                if (fileReader.nextLine().equals("")) {
-                    paragraphCount += 1;
+                String line = fileReader.nextLine();
+
+                if (line.isEmpty()) {
+
+                    if (isNewParagraph) {
+
+                        paragraphCount++;
+                        isNewParagraph = false;
+
+                    }
+
+                } else {
+
+                    isNewParagraph = true;
+
                 }
-
             }
+
+            if (isNewParagraph) {
+                paragraphCount++;
+            }
+
             fileReader.close();
 
-            return (paragraphCount);
-
+            return paragraphCount;
         } catch (FileNotFoundException e) {
-            System.out.println("Error,");
+
+            System.out.println("Error: File not found,");
             e.printStackTrace();
             return -1;
+
         }
-
-
     }
 
     String returnLine (int lineNumber) { //returnerar värdet vid en line av en fil
