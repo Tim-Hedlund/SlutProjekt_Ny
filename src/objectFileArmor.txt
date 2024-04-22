@@ -1,0 +1,12 @@
+Example, skriv bara ett värde inte mer:
+String name;
+int flatDamageReduction;
+float percentDamageReduction;
+float reductionChance;
+float critReductionChance;
+
+Plated wife beater
+5
+0.3
+0.6
+0

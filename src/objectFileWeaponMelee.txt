@@ -3,16 +3,18 @@ String name;
 int damagePerShot;
 int shots;
 float critMultiplier;
-float critChance; Above same for all weapons
+float critChance; Above same for all weapons not only ranged
 float techniqueMultiplier;
 float strengthMultiplier;
 float hitChance;
 
-Knife
-15
+Axe Bodyspray Dark Temptation
 2
-20
+7
+2
 0.25
-2
-2
-2
+1
+1
+0.25
+
+Stick of the staffless

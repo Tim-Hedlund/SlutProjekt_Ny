@@ -22,6 +22,7 @@ public class Game {
         allArmors = objectBuilder.returnArmors();
         allCharacters = objectBuilder.returnCharacters(allWeapons, allArmors);
 
+        /*
         for (Weapon weapon : allWeapons) {
             System.out.println(weapon.name);
         }
@@ -30,7 +31,9 @@ public class Game {
         }
         for (Character character : allCharacters) {
             System.out.println(character.name);
+            System.out.println(character.weapon.name);
         }
+        */
 
         startGame();
 
@@ -39,18 +42,33 @@ public class Game {
     public static <T> T getByName(ArrayList<T> list, String name) {
         for (T obj : list) {
             try {
-                Field nameField = obj.getClass().getField("name");
-                nameField.setAccessible(true);
+                Class<?> currentClass = obj.getClass();
+                Field nameField = null;
 
-                String objName = (String) nameField.get(obj);
-
-                if (objName.equals(name)) {
-                    return obj;
+                while (currentClass != null) {
+                    try {
+                        nameField = currentClass.getDeclaredField("name");
+                        break;
+                    } catch (NoSuchFieldException e) {
+                        currentClass = currentClass.getSuperclass();
+                    }
                 }
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                System.out.println("There is no item in input list with " + name + " as name");
+
+                if (nameField != null) {
+                    nameField.setAccessible(true);
+                    String objName = (String) nameField.get(obj);
+
+                    if (objName.equals(name)) {
+                        return obj;
+                    }
+                } else {
+                    System.out.println("This item or its parent classes do not have a \"name\" field");
+                }
+            } catch (IllegalAccessException e) {
+                System.out.println("Cannot access field \"name\" in this item");
             }
         }
+        System.out.println("There is no object with the name \"" + name + "\" in the input list");
         return null;
     }
 

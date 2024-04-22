@@ -22,15 +22,10 @@ public class ObjectBuilder {
         ArrayList<String> currentWeaponData;
 
         int paragraphCount = rangedWeaponFileMaster.getFileParagraphCount();
-        System.out.println(paragraphCount);
 
         for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
 
             currentWeaponData = rangedWeaponFileMaster.returnParagraphStringList(i);
-
-            for (String string : currentWeaponData) {
-                System.out.println(string);
-            }
 
             weapons.add(returnSingleWeapon(currentWeaponData, inputChecker, true)); //ranged weapons
 

@@ -10,11 +10,41 @@ technique
 aim
 
 Bob
-Short and dumb but very strong, his eyes are too far apart and a tad small just like his brain.
+Short and dumb but very strong; his eyes are too far apart and a tad small just like his brain.
 Axe Bodyspray Dark Temptation
-Null
-200
-200
+Plated wife beater
+180
+180
+8
+2
+1
+
+Bill
+Decent all around, can take more hits than it looks; he is a tall and lanky guy, he is bald with a large white beard.
+Stick of the staffless
+Bathrobe
+130
+130
+4
+4
+4
+
+Tommy
+Weaboo to the max, loves his katana and is good with it; he is short with his black hair in a messy ponytail.
+Katana
+Samurai armor
+90
+90
+2
+7
+3
+
+Rachel
+Weak but a great shot; her hair is set up in two pigtails, and she has an aura of intelligence.
+Revolver
+Bikini and viking helmet (without horns)
+70
+70
 7
 2
 2

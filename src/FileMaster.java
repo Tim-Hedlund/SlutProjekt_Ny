@@ -19,10 +19,16 @@ public class FileMaster {
             int rowNum = getParagraphRow(paragraphNum);
 
             skipLines(fileReader, rowNum);
+            String currentLine;
 
             while (true) {
 
-                String currentLine = fileReader.nextLine();
+                try {
+                    currentLine = fileReader.nextLine();
+                } catch (Exception e){
+                    break;
+                }
+
 
                 if (currentLine.length() != 0) {
 
@@ -173,8 +179,6 @@ public class FileMaster {
         }
 
         return -1;
-
-
 
     }
 
