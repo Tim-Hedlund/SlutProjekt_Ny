@@ -1,75 +1,63 @@
 import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.function.Function;
+
 import Input.*;
 
 public class ObjectBuilder {
 
-    final int PARAGRAPH_SKIP = 1;
+    final static int PARAGRAPH_SKIP = 1;
 
 
 
     ObjectBuilder() {}
 
-    ArrayList<Weapon> returnWeapons() {
-
-        File rangedWeaponFile = new File("src/objectFileWeaponRanged.txt");
-        FileMaster rangedWeaponFileMaster = new FileMaster(rangedWeaponFile);
-
-        InputChecker inputChecker = new InputChecker();
-
-        ArrayList<Weapon> weapons = new ArrayList<>();
-        ArrayList<String> currentWeaponData;
-
-        int paragraphCount = rangedWeaponFileMaster.getFileParagraphCount();
-
+    public <T> ArrayList<T> loadData(File file, Function<ArrayList<String>, T> parseFunction) {
+        FileMaster fileMaster = new FileMaster(file);
+        ArrayList<T> data = new ArrayList<>();
+        ArrayList<String> currentData;
+        int paragraphCount = fileMaster.getFileParagraphCount();
         for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
-
-            currentWeaponData = rangedWeaponFileMaster.returnParagraphStringList(i);
-
-            weapons.add(returnSingleWeapon(currentWeaponData, inputChecker, true)); //ranged weapons
-
+            currentData = fileMaster.returnParagraphStringList(i);
+            data.add(parseFunction.apply(currentData));
         }
-
-        File meleeWeaponFile = new File("src/objectFileWeaponMelee.txt");
-        FileMaster meleeWeaponFileMaster = new FileMaster(meleeWeaponFile);
-
-        paragraphCount = meleeWeaponFileMaster.getFileParagraphCount();
-
-        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
-
-            currentWeaponData = meleeWeaponFileMaster.returnParagraphStringList(i);
-
-            weapons.add(returnSingleWeapon(currentWeaponData, inputChecker, false)); //melee weapons
-
-        }
-
-        return weapons;
-
+        return data;
     }
 
-    ArrayList<Armor> returnArmors() {
-
-        File armorFile = new File("src/objectFileArmor.txt");
-        FileMaster armorFileMaster = new FileMaster(armorFile);
-
+    /*
+    ArrayList<Enemy> returnEnemies() {
+        File enemyFile = new File("src/objectFileEnemy.txt");
         InputChecker inputChecker = new InputChecker();
+        return loadData(enemyFile, data -> returnSingleEnemy(data, inputChecker));
+    }
 
-        ArrayList<Armor> armors = new ArrayList<>();
+    private Enemy returnSingleEnemy(ArrayList<String> data, InputChecker inputChecker) {
+    }
+    */
 
-        ArrayList<String> currentArmorData;
+    ArrayList<Armor> returnArmors() {
+        File armorFile = new File("src/objectFileArmor.txt");
+        InputChecker inputChecker = new InputChecker();
+        return loadData(armorFile, data -> returnSingleArmor(data, inputChecker));
+    }
 
-        int paragraphCount = armorFileMaster.getFileParagraphCount();
+    ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
+        File armorFile = new File("src/objectFileCharacter.txt");
+        InputChecker inputChecker = new InputChecker();
+        return loadData(armorFile, data -> returnSingleCharacter(data, inputChecker, allWeapons, allArmors));
+    }
 
-        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
+    ArrayList<Weapon> returnWeapons() {
 
-            currentArmorData = armorFileMaster.returnParagraphStringList(i);
+        File weaponFileMelee = new File("src/objectFileWeaponMelee.txt");
+        InputChecker inputChecker = new InputChecker();
+        ArrayList<Weapon> returnWeapons = loadData(weaponFileMelee, data -> returnSingleWeapon(data, inputChecker, false));
 
-            armors.add(returnSingleArmor(currentArmorData, inputChecker));
+        File weaponFileRanged = new File("src/objectFileWeaponRanged.txt");
+        returnWeapons.addAll(loadData(weaponFileRanged, data -> returnSingleWeapon(data, inputChecker, true)));
 
-        }
-
-        return armors;
+        return returnWeapons;
 
     }
 
@@ -100,31 +88,6 @@ public class ObjectBuilder {
 
     }
 
-    ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
-
-        File charactersFile = new File("src/objectFileCharacter.txt");
-        FileMaster characterFileMaster = new FileMaster(charactersFile);
-
-        InputChecker inputChecker = new InputChecker();
-
-        ArrayList<Character> characters = new ArrayList<>();
-
-        ArrayList<String> currentCharacterData;
-
-        int paragraphCount = characterFileMaster.getFileParagraphCount();
-
-        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
-
-            currentCharacterData = characterFileMaster.returnParagraphStringList(i);
-
-            characters.add(returnSingleCharacter(currentCharacterData, inputChecker, allWeapons, allArmors));
-
-        }
-
-        return characters;
-
-    }
-
     private Weapon returnSingleWeapon(ArrayList<String> currentWeaponData, InputChecker inputChecker, boolean isRanged) {
 
         if (currentWeaponData.size() == 8) {
@@ -134,7 +97,6 @@ public class ObjectBuilder {
             String shotsString = currentWeaponData.get(2);
             String critMultiplierString = currentWeaponData.get(3);
             String critChanceString = currentWeaponData.get(4);
-
 
             int damagePerShot = inputChecker.toInt(damagePerShotString);
             int shots = inputChecker.toInt(shotsString);

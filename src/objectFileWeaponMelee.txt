@@ -18,3 +18,19 @@ Axe Bodyspray Dark Temptation
 0.25
 
 Stick of the staffless
+8
+2
+1.5
+0.33
+0.75
+1.25
+0.8
+
+Katana
+25
+2
+2.5
+0.4
+2.5
+0.25
+0.6

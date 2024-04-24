@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Fortsatte med att skapa objekt 4">
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet.">
+      <change afterPath="$PROJECT_DIR$/src/Attack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Choice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileMaster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objectFileArmor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileArmor.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objectFileCharacter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileCharacter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objectFileWeaponMelee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileWeaponMelee.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objectFileWeaponRanged.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileWeaponRanged.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +75,8 @@
       <workItem from="1713340716965" duration="3831000" />
       <workItem from="1713359865107" duration="3697000" />
       <workItem from="1713637502322" duration="2305000" />
-      <workItem from="1713766670231" duration="4938000" />
+      <workItem from="1713766670231" duration="5012000" />
+      <workItem from="1713781341921" duration="9351000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -132,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713639801504</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet.">
+      <created>1713771711922</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713771711922</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +155,7 @@
     <MESSAGE value="Fortsatte med att skapa objekt 2" />
     <MESSAGE value="Fortsatte med att skapa objekt 3" />
     <MESSAGE value="Fortsatte med att skapa objekt 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fortsatte med att skapa objekt 4" />
+    <MESSAGE value="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet." />
   </component>
 </project>

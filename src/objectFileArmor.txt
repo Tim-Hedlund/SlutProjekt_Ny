@@ -8,5 +8,23 @@ float critReductionChance;
 Plated wife beater
 5
 0.3
-0.6
+0.5
 0
+
+Bathrobe
+3
+0
+0.8
+0
+
+Samurai armor
+7
+0.35
+0.9
+0.5
+
+Bikini and viking helmet (without horns)
+5
+0.5
+0
+0.66
