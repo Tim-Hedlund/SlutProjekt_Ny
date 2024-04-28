@@ -25,16 +25,12 @@ public class ObjectBuilder {
         return data;
     }
 
-    /*
+
     ArrayList<Enemy> returnEnemies() {
         File enemyFile = new File("src/objectFileEnemy.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(enemyFile, data -> returnSingleEnemy(data, inputChecker));
     }
-
-    private Enemy returnSingleEnemy(ArrayList<String> data, InputChecker inputChecker) {
-    }
-    */
 
     ArrayList<Armor> returnArmors() {
         File armorFile = new File("src/objectFileArmor.txt");
@@ -58,6 +54,33 @@ public class ObjectBuilder {
         returnWeapons.addAll(loadData(weaponFileRanged, data -> returnSingleWeapon(data, inputChecker, true)));
 
         return returnWeapons;
+
+    }
+
+    private Enemy returnSingleEnemy(ArrayList<String> currentEnemyData, InputChecker inputChecker) {
+
+        if (currentEnemyData.size() == 5) {
+
+            String name = currentEnemyData.get(0);
+            String meleePowerString = currentEnemyData.get(1);
+            String rangedPowerString = currentEnemyData.get(2);
+            String rangedPowerLossPerRangeString = currentEnemyData.get(3);
+            String healthString = currentEnemyData.get(4);
+
+            int meleePower = inputChecker.toInt(meleePowerString);
+            int rangedPower = inputChecker.toInt(rangedPowerString);
+            float rangedPowerLossPerRange = inputChecker.toFloat(rangedPowerLossPerRangeString);
+            float health = inputChecker.toFloat(healthString);
+
+            return new Enemy(name, meleePower, rangedPower, rangedPowerLossPerRange, health);
+
+        } else {
+
+            System.out.println("Error,");
+            System.out.println("Incorrect data length");
+
+            return null;
+        }
 
     }
 

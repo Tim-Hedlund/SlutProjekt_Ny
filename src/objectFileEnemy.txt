@@ -1,0 +1,30 @@
+Example, skriv bara ett värde inte mer:
+String name;
+int meleePower; max 10, average 3
+int rangedPower; max 10, average 3
+float rangedPowerLossPerRange;
+float health; average 33,
+
+Angry Russian
+3
+0
+0
+33
+
+Angry AK-47 Russian
+3
+4
+0.33
+33
+
+Alien
+4
+2
+0.33
+50
+
+BEAR
+8
+0
+0
+200

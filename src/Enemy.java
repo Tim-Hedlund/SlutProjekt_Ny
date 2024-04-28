@@ -1,12 +1,13 @@
 public class Enemy {
-
+    String name;
     int meleePower;
     int rangedPower;
     float rangedPowerLossPerRange;
     float health;
 
-    public Enemy(int meleePower, int rangedPower, float rangedPowerLossPerRange, float health) {
+    public Enemy(String name, int meleePower, int rangedPower, float rangedPowerLossPerRange, float health) {
 
+        this.name = name;
         this.meleePower = meleePower;
         this.rangedPower = rangedPower;
         this.rangedPowerLossPerRange = rangedPowerLossPerRange;
@@ -14,6 +15,11 @@ public class Enemy {
 
     }
 
+    boolean isDead() {
+
+        return this.health <= 0;
+
+    }
 
 
 

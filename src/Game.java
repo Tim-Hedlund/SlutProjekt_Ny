@@ -5,11 +5,12 @@ import java.math.*;
 import java.util.Random;
 
 public class Game {
-    InputMaster input = new InputMaster();
-    Team team;
-    ArrayList<Character> allCharacters;
-    ArrayList<Weapon> allWeapons;
-    ArrayList<Armor> allArmors;
+    private final InputMaster input = new InputMaster();
+    private Team team;
+    private ArrayList<Character> allCharacters;
+    private ArrayList<Weapon> allWeapons;
+    private ArrayList<Armor> allArmors;
+    private ArrayList<Enemy> allEnemies;
     double distanceLeft = 200000;
 
     Game () {
@@ -21,6 +22,7 @@ public class Game {
         allWeapons = objectBuilder.returnWeapons();
         allArmors = objectBuilder.returnArmors();
         allCharacters = objectBuilder.returnCharacters(allWeapons, allArmors);
+        allEnemies = objectBuilder.returnEnemies();
 
 
         for (Weapon weapon : allWeapons) {
@@ -28,6 +30,9 @@ public class Game {
         }
         for (Armor armor : allArmors) {
             System.out.println(armor.name);
+        }
+        for (Enemy enemy : allEnemies) {
+            System.out.println(enemy.name);
         }
         for (Character character : allCharacters) {
             System.out.println(character.name);

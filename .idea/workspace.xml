@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet.">
-      <change afterPath="$PROJECT_DIR$/src/Attack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Choice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Gjorde en generisk metod för att skapa klasser, kände att koden började bli pasta. Började med grunden för själva spelet">
+      <change afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objectFileEnemy.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objectFileArmor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileArmor.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objectFileWeaponMelee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileWeaponMelee.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,8 @@
       <workItem from="1713359865107" duration="3697000" />
       <workItem from="1713637502322" duration="2305000" />
       <workItem from="1713766670231" duration="5012000" />
-      <workItem from="1713781341921" duration="9351000" />
+      <workItem from="1713781341921" duration="14232000" />
+      <workItem from="1714068293300" duration="6701000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -141,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713771711922</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Gjorde en generisk metod för att skapa klasser, kände att koden började bli pasta. Började med grunden för själva spelet">
+      <created>1713949824216</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713949824216</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +161,7 @@
     <MESSAGE value="Fortsatte med att skapa objekt 3" />
     <MESSAGE value="Fortsatte med att skapa objekt 4" />
     <MESSAGE value="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet." />
+    <MESSAGE value="Gjorde en generisk metod för att skapa klasser, kände att koden började bli pasta. Började med grunden för själva spelet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gjorde en generisk metod för att skapa klasser, kände att koden började bli pasta. Började med grunden för själva spelet" />
   </component>
 </project>
