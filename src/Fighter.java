@@ -8,4 +8,5 @@ public class Fighter<T>{
         this.position = position;
     }
 
+
 }

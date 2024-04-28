@@ -24,21 +24,19 @@ public class Game {
         allCharacters = objectBuilder.returnCharacters(allWeapons, allArmors);
         allEnemies = objectBuilder.returnEnemies();
 
-
         for (Weapon weapon : allWeapons) {
-            System.out.println(weapon.name);
+            System.out.println(weapon.getName());
         }
         for (Armor armor : allArmors) {
             System.out.println(armor.name);
         }
         for (Enemy enemy : allEnemies) {
-            System.out.println(enemy.name);
+            System.out.println(enemy.getName());
         }
         for (Character character : allCharacters) {
-            System.out.println(character.name);
-            System.out.println(character.weapon.name);
+            System.out.println(character.getName());
+            System.out.println(character.getWeapon().getName());
         }
-
 
         startGame();
 
@@ -109,6 +107,9 @@ public class Game {
     }
 
     private void generateEvent() {
+
+        Fight fight = new Fight(this.allEnemies, this.team.getTeamMembers(), 5);
+        this.team.setTeam(fight.getCharacters());
 
     }
 

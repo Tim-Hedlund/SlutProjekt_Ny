@@ -1,64 +1,146 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Fight {
 
-    private final ArrayList<Fighter<Enemy>> enemies = new ArrayList<>();
-    private final ArrayList<Fighter<Character>> characters = new ArrayList<>();
-    private final int size;
-    private final float TARGET_ACCURACY = 0.5F;
+    private ArrayList<Fighter<Enemy>> enemies = new ArrayList<>();
+    private ArrayList<Fighter<Character>> characters = new ArrayList<>();
+    private int size;
+    private final double TARGET_ACCURACY = 0.5;
 
-    Fight (ArrayList<Enemy> enemies, ArrayList<Character> characters, int size) {
+    public Fight (ArrayList<Enemy> enemies, ArrayList<Character> characters, int size) {
 
         this.size = size;
 
         for (Enemy enemy : enemies) {
-
             this.enemies.add(new Fighter<>(enemy, size));
-
         }
 
         for (Character character : characters) {
-
             this.characters.add(new Fighter<>(character, 0));
-
         }
+
+        startFight();
 
     }
 
-    public ArrayList<Character> startFight() {
+    public void startFight() {
+
+        Scanner scan = new Scanner(System.in);
 
         while (true) {
-            for (Fighter<Character> character : this.characters) {
 
-                makeCharacterMove(character);
 
-            }
-            int totalEnemyMoves = 0;
-            for (Fighter<Enemy> enemy : enemies) {
+            scan.nextLine();
 
-                if (!enemy.obj.isDead()) {
-                    totalEnemyMoves ++;
-                    makeEnemyMove(enemy);
-                }
+            boolean teamIsAlive = MakeCharacterMoves(); //returns true as long as team is alive should continue
 
-            }
+            int status = makeEnemyMoves(teamIsAlive);
 
-            if (totalEnemyMoves == 0) {
+            if (status == 0) {
+
+                System.out.println("enemies have won!");
                 break;
+
+            } else if (status == 1) {
+
+                System.out.println("The team has won!");
+                break;
+
+            } else if (status == 2) {
+
+                System.out.println("The fight continues!");
+
             }
 
         }
 
+        System.out.println("The fight is over...");
+
+    }
+
+    private int makeEnemyMoves(boolean teamIsAlive) {
+
+        if (!teamIsAlive) {
+            return 0;
+        }
+
+        int totalEnemyMoves = 0;
+        System.out.println();
+        System.out.println("Its the enemies turn!");
+        System.out.println(":");
+
+        ArrayList<Fighter<Enemy>> deadEnemies = new ArrayList<>();
+        for (Fighter<Enemy> enemy : enemies) {
+
+            if (enemy.obj.isDead()) {
+                deadEnemies.add(enemy);
+            } else {
+                totalEnemyMoves ++;
+                makeEnemyMove(enemy);
+            }
+
+        }
+
+        this.enemies.removeAll(deadEnemies);
+
+        if (totalEnemyMoves == 0) {
+            return 1;
+        }
+
+        return 2;
+
+    }
+
+    public ArrayList<Character> getCharacters() {
 
         ArrayList<Character> returnCharacters = new ArrayList<>();
-        for (Fighter<Character> character : this.characters) {
+
+        for (Fighter<Character> character : characters) {
 
             returnCharacters.add(character.obj);
 
         }
 
         return returnCharacters;
+
+    }
+
+    private boolean MakeCharacterMoves() {
+
+        ArrayList<Fighter<Character>> characterRemoveArray = new ArrayList<>();
+        for (Fighter<Character> character : this.characters) {
+
+            if(character.obj.getCurrentHealth() <= 0) {
+                System.out.println(character.obj.getName() + " is dead");
+                characterRemoveArray.add(character);
+            }
+
+        }
+
+        for (Fighter<Character> character : characterRemoveArray) {
+
+            if(character.obj.getCurrentHealth() <= 0) {
+                this.characters.remove(character);
+            }
+
+        }
+
+        if (this.characters.size() == 0) {
+            System.out.println("Enemies have killed your whole team");
+            return false;
+        }
+
+        System.out.println();
+        System.out.println("Its your teams turn!");
+        System.out.println(":");
+
+        for (Fighter<Character> character : this.characters) {
+            makeCharacterMove(character);
+        }
+
+        return true;
 
     }
 
@@ -80,20 +162,22 @@ public class Fight {
 
         int distance = Math.abs(checker.position - targetCharacter.position);
 
-        boolean isMelee = checker.obj.rangedPower == 0;
-
-        if (distance > 0 && isMelee) {
-            moveEnemyForward(checker);
-        } else if (distance == 0) {
-            attackMeleeEnemy(checker, targetCharacter);
-        }
+        boolean isMelee = checker.obj.getRangedPower() == 0;
 
         double accuracy = getAccuracy(checker, distance);
 
-        if (accuracy < TARGET_ACCURACY) {
+        if (distance > 0 && isMelee) { //if you can only Melee and are far away, walk closer
             moveEnemyForward(checker);
-        } else {
+
+        } else if (distance == 0) { //if you are in enemies face, Melee
+            attackMeleeEnemy(checker, targetCharacter);
+
+        } else if (accuracy < TARGET_ACCURACY) { //if you are too far away to shoot accurately, walk closer
+            moveEnemyForward(checker);
+
+        } else { //if you are close enough to shoot accurately, shoot Enemy
             attackRangedEnemy(checker, targetCharacter);
+
         }
 
     }
@@ -117,7 +201,11 @@ public class Fight {
 
         damage = damage*damagePercent;
 
+
+        System.out.print(checker.obj.getName() + " Shoots " + target.obj.getName() + " for ");
         target.obj.takeBlockableDamage(damage, hasCrit);
+
+
 
     }
 
@@ -143,13 +231,16 @@ public class Fight {
             damage = damage*MELEE_CRIT_MULTIPLIER;
         }
 
+        System.out.print(checker.obj.getName() + " Hits " + target.obj.getName() + " for ");
         target.obj.takeBlockableDamage(damage, hasCrit);
+
+
 
     }
 
     private double getAccuracy(Fighter<Enemy> checker, int distance) {
 
-        return Math.pow(1-checker.obj.rangedPowerLossPerRange, distance);
+        return Math.pow(1-checker.obj.getRangedPowerLossPerRange(), distance);
 
 
     }
@@ -157,6 +248,8 @@ public class Fight {
     private void moveEnemyForward(Fighter<Enemy> checker) {
 
         checker.position --;
+        System.out.println(checker.obj.getName() + " Moves forward");
+        System.out.println(checker.position);
 
     }
 
@@ -184,7 +277,6 @@ public class Fight {
         int pos = checker.position;
 
         ArrayList<Integer> oppositionDistance = new ArrayList<>();
-
 
         ArrayList<Fighter<Enemy>> oppositionPositions = new ArrayList<>(enemies);
 
@@ -216,6 +308,44 @@ public class Fight {
     }
 
     private void makeCharacterMove(Fighter<Character> character) {
+
+        Fighter<Enemy> targetEnemy = this.enemies.get(getShortestEnemyDistanceIndex(character));
+
+        int distance = Math.abs(character.position - targetEnemy.position);
+
+        boolean isMelee = character.obj.getWeapon() instanceof Melee;
+
+        double accuracy;
+
+        if (isMelee) {
+            accuracy = 0;
+        } else {
+            accuracy = character.obj.getAccuracy(distance);
+            System.out.println(accuracy + " " + character.obj.getName());
+        }
+
+        if (distance > 0 && isMelee) { //if you can only Melee and are far away, walk closer
+            moveCharacterForward(character);
+
+        } else if (distance == 0 && isMelee) { //if you are in enemies face, Melee
+            character.obj.attackMelee(targetEnemy.obj.getName());
+
+        } else if (accuracy < TARGET_ACCURACY) { //if you are too far away to shoot accurately, walk closer
+            moveCharacterForward(character);
+
+        } else { //if you are close enough to shoot accurately, shoot Enemy
+            targetEnemy.obj.takeDamage(character.obj.attackRanged(accuracy, targetEnemy.obj.getName()));
+
+        }
+
+    }
+
+    private void moveCharacterForward(Fighter<Character> character) {
+
+        character.position += 1;
+        System.out.println(character.obj.getName() + "MovesForward");
+        System.out.println(character.position);
+
     }
 
 }

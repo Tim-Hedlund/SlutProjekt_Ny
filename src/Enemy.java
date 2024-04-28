@@ -1,9 +1,10 @@
 public class Enemy {
-    String name;
-    int meleePower;
-    int rangedPower;
-    float rangedPowerLossPerRange;
-    float health;
+
+    private String name;
+    private int meleePower;
+    private int rangedPower;
+    private float rangedPowerLossPerRange;
+    private float health;
 
     public Enemy(String name, int meleePower, int rangedPower, float rangedPowerLossPerRange, float health) {
 
@@ -27,5 +28,19 @@ public class Enemy {
 
     public double getMeleePower() {
         return this.meleePower;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public float getRangedPowerLossPerRange() {
+        return rangedPowerLossPerRange;
+    }
+
+    public void takeDamage(double damage) {
+
+        this.health -= damage;
+
     }
 }

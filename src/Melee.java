@@ -5,13 +5,17 @@ public class Melee extends Weapon {
     float hitChance;
 
     public Melee(String name, int damagePerShot, int shots, float critMultiplier, float critChance, float techniqueMultiplier, float strengthMultiplier, float hitChance) {
-        super.name = name;
-        super.damagePerShot = damagePerShot;
-        super.shots = shots;
-        super.critMultiplier = critMultiplier;
-        super.critChance = critChance;
+        super.setName(name);
+        super.setDamagePerShot(damagePerShot);
+        super.setShots(shots);
+        super.setCritMultiplier(critMultiplier);
+        super.setCritChance(critChance);
         this.techniqueMultiplier = techniqueMultiplier;
         this.strengthMultiplier = strengthMultiplier;
         this.hitChance = hitChance;
+    }
+
+    public float getHitChance() {
+        return hitChance;
     }
 }
