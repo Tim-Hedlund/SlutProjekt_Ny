@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Tror fight delen fungerar för Enemy klassen, hade svårt att få generiska klasser att fungera men nu är det fixat">
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="De viktigaste delarna av spelet fungerar, mer tid skulle vara fantastiskt men jag har en fungerande produkt. Ska fixa lite mer med UIn för att det ska vara lättare att förstå vad som händer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Melee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Melee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ranged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ranged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objectFileCharacter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileCharacter.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objectFileEnemy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectFileEnemy.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714313672628</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="De viktigaste delarna av spelet fungerar, mer tid skulle vara fantastiskt men jag har en fungerande produkt. Ska fixa lite mer med UIn för att det ska vara lättare att förstå vad som händer">
+      <created>1714333007078</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714333007078</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +175,7 @@
     <MESSAGE value="Skapa objekt klart, ska göra klart alla fyra main karaktärer sen börja med faktiska spelet." />
     <MESSAGE value="Gjorde en generisk metod för att skapa klasser, kände att koden började bli pasta. Började med grunden för själva spelet" />
     <MESSAGE value="Tror fight delen fungerar för Enemy klassen, hade svårt att få generiska klasser att fungera men nu är det fixat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tror fight delen fungerar för Enemy klassen, hade svårt att få generiska klasser att fungera men nu är det fixat" />
+    <MESSAGE value="De viktigaste delarna av spelet fungerar, mer tid skulle vara fantastiskt men jag har en fungerande produkt. Ska fixa lite mer med UIn för att det ska vara lättare att förstå vad som händer" />
+    <option name="LAST_COMMIT_MESSAGE" value="De viktigaste delarna av spelet fungerar, mer tid skulle vara fantastiskt men jag har en fungerande produkt. Ska fixa lite mer med UIn för att det ska vara lättare att förstå vad som händer" />
   </component>
 </project>

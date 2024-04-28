@@ -90,10 +90,6 @@ public class Character {
         double trueAccuracy = ((accuracyLossPerRange * distance));
         double trueAim = ((this.aim * aimMultiplier) + 1);
 
-        System.out.println(this.aim);
-        System.out.println(aimMultiplier);
-
-
         return (1 - (trueAccuracy/trueAim));
 
     }
@@ -136,7 +132,7 @@ public class Character {
             damage *= this.weapon.getCritMultiplier();
         }
 
-        System.out.print(this.name + " Hits " + targetName + " with " + this.weapon.getName() + " for " + damage);
+        System.out.println(this.name + " Hits " + targetName + " with " + this.weapon.getName() + " for " + damage);
         return damage;
 
     }
@@ -178,7 +174,7 @@ public class Character {
             damage *= getWeapon().getCritMultiplier();
         }
 
-        System.out.print(this.name + " shoots " + targetName + " with " + this.weapon.getName() + " for " + damage);
+        System.out.println(this.name + " shoots " + targetName + " with " + this.weapon.getName() + " for " + damage);
         return damage;
 
     }

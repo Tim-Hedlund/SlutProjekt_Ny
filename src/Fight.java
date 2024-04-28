@@ -76,6 +76,7 @@ public class Fight {
 
             if (enemy.obj.isDead()) {
                 deadEnemies.add(enemy);
+                System.out.println(enemy.obj.getName() + " is dead!");
             } else {
                 totalEnemyMoves ++;
                 makeEnemyMove(enemy);
@@ -249,7 +250,6 @@ public class Fight {
 
         checker.position --;
         System.out.println(checker.obj.getName() + " Moves forward");
-        System.out.println(checker.position);
 
     }
 
@@ -321,7 +321,6 @@ public class Fight {
             accuracy = 0;
         } else {
             accuracy = character.obj.getAccuracy(distance);
-            System.out.println(accuracy + " " + character.obj.getName());
         }
 
         if (distance > 0 && isMelee) { //if you can only Melee and are far away, walk closer
@@ -344,7 +343,6 @@ public class Fight {
 
         character.position += 1;
         System.out.println(character.obj.getName() + "MovesForward");
-        System.out.println(character.position);
 
     }
 

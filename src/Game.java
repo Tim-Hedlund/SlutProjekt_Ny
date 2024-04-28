@@ -1,8 +1,11 @@
 import Input.InputMaster;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.reflect.Field;
 import java.math.*;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private final InputMaster input = new InputMaster();
@@ -23,20 +26,6 @@ public class Game {
         allArmors = objectBuilder.returnArmors();
         allCharacters = objectBuilder.returnCharacters(allWeapons, allArmors);
         allEnemies = objectBuilder.returnEnemies();
-
-        for (Weapon weapon : allWeapons) {
-            System.out.println(weapon.getName());
-        }
-        for (Armor armor : allArmors) {
-            System.out.println(armor.name);
-        }
-        for (Enemy enemy : allEnemies) {
-            System.out.println(enemy.getName());
-        }
-        for (Character character : allCharacters) {
-            System.out.println(character.getName());
-            System.out.println(character.getWeapon().getName());
-        }
 
         startGame();
 
@@ -78,8 +67,11 @@ public class Game {
     void startGame() {
 
         System.out.println("Welcome to \"Escape the motherland\"");
-        System.out.println("Chose to create a character or use a default one");
-        System.out.println("write 1 for custom or 2 for a default character");
+        System.out.println("Press enter to continue:");
+
+        Scanner scanner = new Scanner(System.in);
+
+        scanner.nextLine();
 
         new ObjectBuilder();
 
@@ -89,10 +81,6 @@ public class Game {
         this.team.addCharacter(allCharacters.get(1));
         this.team.addCharacter(allCharacters.get(2));
         this.team.addCharacter(allCharacters.get(3));
-
-        int choice = input.getInt();
-
-        System.out.println(choice);
 
         nextGameEvent();
 
@@ -107,8 +95,27 @@ public class Game {
     }
 
     private void generateEvent() {
+        Random rnd = new Random();
+        int size = rnd.nextInt(4, 9);
+        int enemyCount = rnd.nextInt(1, 7);
 
-        Fight fight = new Fight(this.allEnemies, this.team.getTeamMembers(), 5);
+        ArrayList<Enemy> enemies = new ArrayList<>();
+
+        for (int i = 0; i < enemyCount; i++) {
+            int enemyIndex = rnd.nextInt(0, this.allEnemies.size());
+            enemies.add(allEnemies.get(enemyIndex));
+            System.out.print(allEnemies.get(enemyIndex).getName());
+            System.out.print(", ");
+        }
+        int enemyIndex = rnd.nextInt(0, this.allEnemies.size());
+        enemies.add(allEnemies.get(enemyIndex));
+        System.out.print("and a ");
+        System.out.print(allEnemies.get(enemyIndex).getName());
+        System.out.println("!");
+        System.out.println();
+        System.out.println("You still have " + distanceLeft + " meters left");
+
+        Fight fight = new Fight(enemies, this.team.getTeamMembers(), size);
         this.team.setTeam(fight.getCharacters());
 
     }
@@ -120,16 +127,11 @@ public class Game {
 
         double random = Math.random();
         double distance = Math.log((-1)/(random - 1))/Math.log(1 + dist * K);
-        for (int i = 0; i < 10; i++) {
-            random = Math.random();
-            distance = Math.log((-1)/(random - 1))/Math.log(1 + dist * K);
 
-            System.out.println(distance);
-        }
+        System.out.print("After " + distance + " meters traveled, you encounter a ");
 
         this.distanceLeft -= distance;
 
     }
-
 
 }
