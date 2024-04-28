@@ -1,24 +1,24 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class Fight <C extends Character, E extends Enemy> {
 
-    ArrayList<Fighter<E>> enemies = new ArrayList<>();
-    ArrayList<Fighter<C>> characters = new ArrayList<>();
-    int size;
-    final float TARGET_ACCURACY = 0.5F;
+public class Fight {
 
-    Fight (ArrayList<E> enemies, ArrayList<C> characters, int size) {
+    private final ArrayList<Fighter<Enemy>> enemies = new ArrayList<>();
+    private final ArrayList<Fighter<Character>> characters = new ArrayList<>();
+    private final int size;
+    private final float TARGET_ACCURACY = 0.5F;
+
+    Fight (ArrayList<Enemy> enemies, ArrayList<Character> characters, int size) {
 
         this.size = size;
 
-        for (E enemy : enemies) {
+        for (Enemy enemy : enemies) {
 
-            this.enemies.add(new Fighter<>(enemy, 0));
+            this.enemies.add(new Fighter<>(enemy, size));
 
         }
 
-        for (C character : characters) {
+        for (Character character : characters) {
 
             this.characters.add(new Fighter<>(character, 0));
 
@@ -28,49 +28,64 @@ public class Fight <C extends Character, E extends Enemy> {
 
     public ArrayList<Character> startFight() {
 
-        boolean enemiesAreAlive = true;
-
-        while (enemiesAreAlive) {
-            for (Fighter<C> character : characters) {
+        while (true) {
+            for (Fighter<Character> character : this.characters) {
 
                 makeCharacterMove(character);
 
             }
-            for (Fighter<E> enemy : enemies) {
+            int totalEnemyMoves = 0;
+            for (Fighter<Enemy> enemy : enemies) {
 
-                makeEnemyMove(enemy);
+                if (!enemy.obj.isDead()) {
+                    totalEnemyMoves ++;
+                    makeEnemyMove(enemy);
+                }
 
             }
 
+            if (totalEnemyMoves == 0) {
+                break;
+            }
+
         }
+
+
+        ArrayList<Character> returnCharacters = new ArrayList<>();
+        for (Fighter<Character> character : this.characters) {
+
+            returnCharacters.add(character.obj);
+
+        }
+
+        return returnCharacters;
 
     }
 
     //alla kan antingen flytta sig mot fienden eller skjuta.
 
-    private void makeEnemyMove(Fighter<E> enemy) {
+    private void makeEnemyMove(Fighter<Enemy> enemy) {
 
-        if (enemy.t.isDead()) {
+        if (enemy.obj.isDead()) {
             return;
         }
 
-        choseMove(enemy);
-
-
-
+        choseEnemyMove(enemy);
 
     }
 
-    void choseMove(Fighter<E> checker) {
+    void choseEnemyMove(Fighter<Enemy> checker) {
 
-        int distance = getShortestDistanceIndex(checker);
+        Fighter<Character> targetCharacter = this.characters.get(getShortestCharacterDistanceIndex(checker));
 
-        boolean isMelee = checker.t.rangedPower == 0;
+        int distance = Math.abs(checker.position - targetCharacter.position);
+
+        boolean isMelee = checker.obj.rangedPower == 0;
 
         if (distance > 0 && isMelee) {
             moveEnemyForward(checker);
         } else if (distance == 0) {
-            attackMeleeEnemy(checker);
+            attackMeleeEnemy(checker, targetCharacter);
         }
 
         double accuracy = getAccuracy(checker, distance);
@@ -78,69 +93,108 @@ public class Fight <C extends Character, E extends Enemy> {
         if (accuracy < TARGET_ACCURACY) {
             moveEnemyForward(checker);
         } else {
-            attackRangedEnemy(checker);
+            attackRangedEnemy(checker, targetCharacter);
         }
 
     }
 
-    private void attackRangedEnemy(Fighter<E> checker) {
+    private void attackRangedEnemy(Fighter<Enemy> checker, Fighter<Character> target) {
+
+        final double RANGED_MULTIPLIER = 12;
+        final double RANGED_CRIT_CHANCE = 0.25;
+        final double RANGED_CRIT_MULTIPLIER = 1.5;
+
+        double damage = RANGED_MULTIPLIER * checker.obj.getRangedPower();
+
+        int distance = Math.abs(checker.position - target.position);
+        double damagePercent = getAccuracy(checker, distance);
+
+        boolean hasCrit = checkCritChance(RANGED_CRIT_CHANCE);
+
+        if (hasCrit) {
+            damage = damage*RANGED_CRIT_MULTIPLIER;
+        }
+
+        damage = damage*damagePercent;
+
+        target.obj.takeBlockableDamage(damage, hasCrit);
+
     }
 
-    private void attackMeleeEnemy(Fighter<E> checker) {
-    }
+    private boolean checkCritChance(double critChance) {
 
-    private double getAccuracy(Fighter<E> checker, int distance) {
+        double randomNumber = Math.random();
 
-        return Math.pow(1-checker.t.rangedPowerLossPerRange, distance);
-
+        return randomNumber < critChance;
 
     }
 
-    private void moveEnemyForward(Fighter<E> checker) {
+    private void attackMeleeEnemy(Fighter<Enemy> checker, Fighter<Character> target) {
+
+        final double MELEE_MULTIPLIER = 10;
+        final double MELEE_CRIT_CHANCE = 0.3;
+        final double MELEE_CRIT_MULTIPLIER = 1.5;
+
+        double damage = MELEE_MULTIPLIER * checker.obj.getMeleePower();
+
+        boolean hasCrit = checkCritChance(MELEE_CRIT_CHANCE);
+
+        if (hasCrit) {
+            damage = damage*MELEE_CRIT_MULTIPLIER;
+        }
+
+        target.obj.takeBlockableDamage(damage, hasCrit);
+
+    }
+
+    private double getAccuracy(Fighter<Enemy> checker, int distance) {
+
+        return Math.pow(1-checker.obj.rangedPowerLossPerRange, distance);
+
+
+    }
+
+    private void moveEnemyForward(Fighter<Enemy> checker) {
 
         checker.position --;
 
     }
 
-    private float getCharacterTarget(Fighter<C> checker) {
-
-
-    }
-
-    int getShortestDistanceIndex(Fighter checker) {
+    int getShortestCharacterDistanceIndex(Fighter<Enemy> checker) {
 
         int pos = checker.position;
 
         ArrayList<Integer> oppositionDistance = new ArrayList<>();
 
-        if (checker.t instanceof Character) {
+        ArrayList<Fighter<Character>> oppositionPositions = new ArrayList<>(characters);
 
-            ArrayList<Fighter<E>> oppositionPositions = new ArrayList<>(enemies);
+        for (Fighter<Character> character: oppositionPositions) {
 
-            for (Fighter<E> enemy: oppositionPositions) {
-
-                oppositionDistance.add(Math.abs(enemy.position - pos));
-
-            }
-
-            return returnSmallest(oppositionDistance);
-
-
-        } else if (checker.t instanceof Enemy) {
-
-            ArrayList<Fighter<C>> oppositionPositions = new ArrayList<>(characters);
-
-            for (Fighter<C> character: oppositionPositions) {
-
-                oppositionDistance.add(Math.abs(character.position - pos));
-
-            }
-
-            return returnSmallest(oppositionDistance);
+            oppositionDistance.add(Math.abs(character.position - pos));
 
         }
 
-        return -1;
+        return returnSmallest(oppositionDistance);
+
+
+    }
+
+    int getShortestEnemyDistanceIndex(Fighter<Character> checker) {
+
+        int pos = checker.position;
+
+        ArrayList<Integer> oppositionDistance = new ArrayList<>();
+
+
+        ArrayList<Fighter<Enemy>> oppositionPositions = new ArrayList<>(enemies);
+
+        for (Fighter<Enemy> enemy: oppositionPositions) {
+
+            oppositionDistance.add(Math.abs(enemy.position - pos));
+
+        }
+
+        return returnSmallest(oppositionDistance);
 
     }
 
@@ -161,8 +215,7 @@ public class Fight <C extends Character, E extends Enemy> {
 
     }
 
-    private void makeCharacterMove(Fighter<C> character) {
+    private void makeCharacterMove(Fighter<Character> character) {
     }
-
 
 }

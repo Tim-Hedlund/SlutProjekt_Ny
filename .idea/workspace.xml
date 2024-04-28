@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Gjorde en generisk metod för att skapa klasser, kände att koden började bli pasta. Började med grunden för själva spelet">
-      <change afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objectFileEnemy.txt" afterDir="false" />
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Fortsatte med fight delen av spelet, försöker göra den så simpel som möjligt för att bli klar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

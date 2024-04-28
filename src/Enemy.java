@@ -21,6 +21,11 @@ public class Enemy {
 
     }
 
+    public double getRangedPower() {
+        return this.rangedPower;
+    }
 
-
+    public double getMeleePower() {
+        return this.meleePower;
+    }
 }

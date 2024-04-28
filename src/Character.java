@@ -4,7 +4,7 @@ public class Character {
     Weapon weapon;
     Armor armor;
     int maxHealth;
-    float currentHealth;
+    double currentHealth;
     int strength;
     int technique;
     int aim;
@@ -29,5 +29,31 @@ public class Character {
 
     }
 
+
+    public void takeTrueDamage(double damage) {
+        currentHealth-=damage;
+    }
+
+    public void takeBlockableDamage(double damage, boolean isCrit) {
+
+        Armor armor = this.armor;
+
+        damage -= armor.flatDamageReduction;
+
+        double randomNumber = Math.random();
+
+        if (randomNumber < armor.reductionChance) {
+
+            if (isCrit) {
+                damage = ((1-armor.critReductionChance) * damage);
+            } else {
+                damage = ((1-armor.percentDamageReduction) * damage);
+            }
+
+        }
+
+        this.currentHealth -= damage;
+
+    }
 
 }

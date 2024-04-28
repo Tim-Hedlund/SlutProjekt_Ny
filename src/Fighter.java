@@ -1,10 +1,10 @@
-public class Fighter<T> {
+public class Fighter<T>{
 
-    T t;
+    T obj;
     int position;
 
-    Fighter(T t, int position) {
-        this.t = t;
+    Fighter(T obj, int position) {
+        this.obj = obj;
         this.position = position;
     }
 

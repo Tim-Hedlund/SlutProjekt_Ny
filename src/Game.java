@@ -98,8 +98,6 @@ public class Game {
 
         nextGameEvent();
 
-        //f: y=1-((1)/((1+((1)/(21714)))^(x)))
-
     }
 
     private void nextGameEvent() {
@@ -111,8 +109,6 @@ public class Game {
     }
 
     private void generateEvent() {
-
-
 
     }
 
