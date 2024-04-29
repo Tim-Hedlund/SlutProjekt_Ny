@@ -103,12 +103,12 @@ public class Game {
 
         for (int i = 0; i < enemyCount; i++) {
             int enemyIndex = rnd.nextInt(0, this.allEnemies.size());
-            enemies.add(allEnemies.get(enemyIndex));
+            enemies.add(new Enemy (allEnemies.get(enemyIndex)));
             System.out.print(allEnemies.get(enemyIndex).getName());
             System.out.print(", ");
         }
         int enemyIndex = rnd.nextInt(0, this.allEnemies.size());
-        enemies.add(allEnemies.get(enemyIndex));
+        enemies.add(new Enemy (allEnemies.get(enemyIndex)));
         System.out.print("and a ");
         System.out.print(allEnemies.get(enemyIndex).getName());
         System.out.println("!");

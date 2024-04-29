@@ -6,6 +6,7 @@ public class Armor {
     float reductionChance;
     float critReductionChance;
 
+    //Constructor för Armor
     public Armor(String name, int flatDamageReduction, float percentDamageReduction, float reductionChance, float critReductionChance) {
         this.name = name;
         this.flatDamageReduction = flatDamageReduction;

@@ -1,7 +1,7 @@
 public class Fighter<T>{
 
-    T obj;
-    int position;
+    public T obj;
+    public int position;
 
     Fighter(T obj, int position) {
         this.obj = obj;

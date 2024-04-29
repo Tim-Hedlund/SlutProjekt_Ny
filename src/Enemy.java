@@ -1,11 +1,12 @@
 public class Enemy {
 
-    private String name;
-    private int meleePower;
-    private int rangedPower;
-    private float rangedPowerLossPerRange;
-    private float health;
+    private final String name;
+    private final int meleePower;
+    private final int rangedPower;
+    private final float rangedPowerLossPerRange;
+    private double health;
 
+    //default constructor
     public Enemy(String name, int meleePower, int rangedPower, float rangedPowerLossPerRange, float health) {
 
         this.name = name;
@@ -14,6 +15,15 @@ public class Enemy {
         this.rangedPowerLossPerRange = rangedPowerLossPerRange;
         this.health = health;
 
+    }
+
+    //used to copy Enemy so that there is only one of a single enemy in a fight
+    public Enemy(Enemy otherEnemy) {
+        this.name = otherEnemy.name;
+        this.meleePower = otherEnemy.meleePower;
+        this.rangedPower = otherEnemy.rangedPower;
+        this.rangedPowerLossPerRange = otherEnemy.rangedPowerLossPerRange;
+        this.health = otherEnemy.health;
     }
 
     boolean isDead() {
@@ -42,5 +52,9 @@ public class Enemy {
 
         this.health -= damage;
 
+    }
+
+    public double getHealth() {
+        return this.health;
     }
 }

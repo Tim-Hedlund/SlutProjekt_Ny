@@ -9,6 +9,7 @@ public class Fight {
     private int size;
     private final double TARGET_ACCURACY = 0.5;
 
+    //prepares the fight, prepares the arraylists
     public Fight (ArrayList<Enemy> enemies, ArrayList<Character> characters, int size) {
 
         this.size = size;
@@ -25,6 +26,7 @@ public class Fight {
 
     }
 
+    //the "main method" of each fight
     public void startFight() {
 
         Scanner scan = new Scanner(System.in);
@@ -60,6 +62,7 @@ public class Fight {
 
     }
 
+    //Makes one move for each enemy if the team is alive and in some cases returns if the fight is over aswell
     private int makeEnemyMoves(boolean teamIsAlive) {
 
         if (!teamIsAlive) {
@@ -73,6 +76,7 @@ public class Fight {
 
         ArrayList<Fighter<Enemy>> deadEnemies = new ArrayList<>();
         for (Fighter<Enemy> enemy : enemies) {
+            System.out.println(enemy.obj.getHealth());
 
             if (enemy.obj.isDead()) {
                 deadEnemies.add(enemy);
@@ -84,7 +88,9 @@ public class Fight {
 
         }
 
-        this.enemies.removeAll(deadEnemies);
+        for (Fighter<Enemy> deadEnemy : deadEnemies) {
+            this.enemies.remove(deadEnemy);
+        }
 
         if (totalEnemyMoves == 0) {
             return 1;
@@ -94,6 +100,7 @@ public class Fight {
 
     }
 
+    //returns the character object from the Fighter<Character> arraylist
     public ArrayList<Character> getCharacters() {
 
         ArrayList<Character> returnCharacters = new ArrayList<>();
@@ -108,6 +115,7 @@ public class Fight {
 
     }
 
+    //makes all the moves for characters
     private boolean MakeCharacterMoves() {
 
         ArrayList<Fighter<Character>> characterRemoveArray = new ArrayList<>();
@@ -145,8 +153,7 @@ public class Fight {
 
     }
 
-    //alla kan antingen flytta sig mot fienden eller skjuta.
-
+    //The enemy makes their move if they aren't dead
     private void makeEnemyMove(Fighter<Enemy> enemy) {
 
         if (enemy.obj.isDead()) {
@@ -157,6 +164,7 @@ public class Fight {
 
     }
 
+    //The enemy choses their move based on their
     void choseEnemyMove(Fighter<Enemy> checker) {
 
         Fighter<Character> targetCharacter = this.characters.get(getShortestCharacterDistanceIndex(checker));
@@ -183,9 +191,10 @@ public class Fight {
 
     }
 
+    //Enemy attacks from range, only if they have ranged power
     private void attackRangedEnemy(Fighter<Enemy> checker, Fighter<Character> target) {
 
-        final double RANGED_MULTIPLIER = 12;
+        final double RANGED_MULTIPLIER = 6;
         final double RANGED_CRIT_CHANCE = 0.25;
         final double RANGED_CRIT_MULTIPLIER = 1.5;
 
@@ -210,6 +219,7 @@ public class Fight {
 
     }
 
+    //Checks for crit
     private boolean checkCritChance(double critChance) {
 
         double randomNumber = Math.random();
@@ -218,9 +228,10 @@ public class Fight {
 
     }
 
+    //Enemy attacks melee if they are close enough
     private void attackMeleeEnemy(Fighter<Enemy> checker, Fighter<Character> target) {
 
-        final double MELEE_MULTIPLIER = 10;
+        final double MELEE_MULTIPLIER = 5;
         final double MELEE_CRIT_CHANCE = 0.3;
         final double MELEE_CRIT_MULTIPLIER = 1.5;
 
@@ -239,6 +250,7 @@ public class Fight {
 
     }
 
+    //Enemy gets their ranged accuracy
     private double getAccuracy(Fighter<Enemy> checker, int distance) {
 
         return Math.pow(1-checker.obj.getRangedPowerLossPerRange(), distance);
@@ -246,6 +258,7 @@ public class Fight {
 
     }
 
+    //Enemy moves forward
     private void moveEnemyForward(Fighter<Enemy> checker) {
 
         checker.position --;
@@ -309,7 +322,8 @@ public class Fight {
 
     private void makeCharacterMove(Fighter<Character> character) {
 
-        Fighter<Enemy> targetEnemy = this.enemies.get(getShortestEnemyDistanceIndex(character));
+        int closestEnemyIndex = getShortestEnemyDistanceIndex(character);
+        Fighter<Enemy> targetEnemy = this.enemies.get(closestEnemyIndex);
 
         int distance = Math.abs(character.position - targetEnemy.position);
 
@@ -327,17 +341,16 @@ public class Fight {
             moveCharacterForward(character);
 
         } else if (distance == 0 && isMelee) { //if you are in enemies face, Melee
-            character.obj.attackMelee(targetEnemy.obj.getName());
+            targetEnemy.obj.takeDamage(character.obj.attackMelee(targetEnemy.obj.getName()));
 
         } else if (accuracy < TARGET_ACCURACY) { //if you are too far away to shoot accurately, walk closer
             moveCharacterForward(character);
 
         } else { //if you are close enough to shoot accurately, shoot Enemy
             targetEnemy.obj.takeDamage(character.obj.attackRanged(accuracy, targetEnemy.obj.getName()));
-
         }
-
     }
+
 
     private void moveCharacterForward(Fighter<Character> character) {
 

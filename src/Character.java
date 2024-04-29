@@ -22,6 +22,7 @@ public class Character {
 
     private float currentHunger;
 
+    //Default constructor
     Character (String name, String description, int maxHealth, int strength, int technique, int aim, int hunger, Weapon weapon, Armor armor) {
 
         this.name = name;
@@ -40,11 +41,12 @@ public class Character {
 
     }
 
-
+    //takes damage without checking for armor
     public void takeTrueDamage(double damage) {
         currentHealth-=damage;
     }
 
+    //takes damage with check for armor
     public void takeBlockableDamage(double damage, boolean isCrit) {
 
         Armor armor = this.armor;
@@ -78,6 +80,7 @@ public class Character {
         return this.weapon;
     }
 
+    //returns ranged weapon accuracy
     public double getAccuracy(int distance) {
 
         if (!(this.weapon instanceof Ranged)) {
@@ -93,6 +96,8 @@ public class Character {
         return (1 - (trueAccuracy/trueAim));
 
     }
+
+    //attacks with melee weapon
     public double attackMelee(String targetName) {
 
         if (!(this.weapon instanceof Melee)) {
@@ -115,6 +120,7 @@ public class Character {
 
     }
 
+    //Deals one melee attack of damage, used multiple times for multiple hits.
     private double dealMeleeDamage(String targetName) {
 
         final int TARGET_SKILL_NORMAL = 4;
@@ -137,6 +143,7 @@ public class Character {
 
     }
 
+    //random number generator for chance
     private boolean checkRandom(double randomChance) {
 
         double randomNumber = Math.random();
@@ -145,6 +152,7 @@ public class Character {
 
     }
 
+    //attacks with ranged weapon.
     public double attackRanged(double accuracy, String targetName) {
         if (!(this.weapon instanceof Ranged)) {
             return -1;
@@ -166,6 +174,7 @@ public class Character {
 
     }
 
+    //Deals one ranged attack of damage, used multiple times for multiple shots.
     private double dealRangedDamage(String targetName) {
 
         double damage = getWeapon().getDamagePerShot();
