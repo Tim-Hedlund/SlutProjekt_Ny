@@ -9,7 +9,8 @@ public class Fight {
     private int size;
     private final double TARGET_ACCURACY = 0.5;
 
-    //prepares the fight, prepares the arraylists
+    //prepares the fight, prepares the arraylists for characters and enemies and turns them into the
+    //generic Fighter class in order to store position data
     public Fight (ArrayList<Enemy> enemies, ArrayList<Character> characters, int size) {
 
         this.size = size;
@@ -26,13 +27,12 @@ public class Fight {
 
     }
 
-    //the "main method" of each fight
+    //the "main method" of each fight, checks the status variable for if anybody has won
     public void startFight() {
 
         Scanner scan = new Scanner(System.in);
 
         while (true) {
-
 
             scan.nextLine();
 
@@ -62,7 +62,7 @@ public class Fight {
 
     }
 
-    //Makes one move for each enemy if the team is alive and in some cases returns if the fight is over aswell
+    //Makes one move for each enemy if the team is alive and in some cases returns if the fight is over as well
     private int makeEnemyMoves(boolean teamIsAlive) {
 
         if (!teamIsAlive) {
@@ -266,6 +266,7 @@ public class Fight {
 
     }
 
+    //Gets the shortest distance from inputted enemy to character
     int getShortestCharacterDistanceIndex(Fighter<Enemy> checker) {
 
         int pos = checker.position;
@@ -285,6 +286,7 @@ public class Fight {
 
     }
 
+    //Gets the shortest distance from inputted character to enemy
     int getShortestEnemyDistanceIndex(Fighter<Character> checker) {
 
         int pos = checker.position;
@@ -303,6 +305,7 @@ public class Fight {
 
     }
 
+    //Returns the smallest integer in an arraylist. Useful for getting the shortest distance.
     private int returnSmallest(ArrayList<Integer> input) {
 
         int shortestDistance = input.get(0);
@@ -320,6 +323,7 @@ public class Fight {
 
     }
 
+    //Makes one character's move.
     private void makeCharacterMove(Fighter<Character> character) {
 
         int closestEnemyIndex = getShortestEnemyDistanceIndex(character);
@@ -352,6 +356,7 @@ public class Fight {
     }
 
 
+    //Moves the character forward
     private void moveCharacterForward(Fighter<Character> character) {
 
         character.position += 1;
