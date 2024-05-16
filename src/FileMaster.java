@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class FileMaster {
     File file;
 
+    //File master constructor, sets the "file" to input file
     FileMaster(File file) {
         this.file = file;
     }
 
+    //Returns an arraylist of Strings when scanning a document, Only returns one paragraph at a time as the list.
     ArrayList<String> returnParagraphStringList (int paragraphNum) {
 
         ArrayList<String> returnList = new ArrayList<>();
@@ -29,7 +31,7 @@ public class FileMaster {
                     break;
                 }
 
-
+                //checks if line is not empty. Important because empty lines are the end of the paragraph
                 if (currentLine.length() != 0) {
 
                     returnList.add(currentLine);
@@ -50,6 +52,7 @@ public class FileMaster {
 
     }
 
+    //Gets how many paragraphs are in a document
     int getFileParagraphCount() {
         try {
             Scanner fileReader = new Scanner(this.file);
@@ -61,6 +64,8 @@ public class FileMaster {
 
                 String line = fileReader.nextLine();
 
+                //checks if the line is empty (new paragraph) if the line is empty it sets isNewParagraph to true
+                //also allows infinite empty lines between paragraphs
                 if (line.isEmpty()) {
 
                     if (isNewParagraph) {
@@ -93,6 +98,7 @@ public class FileMaster {
         }
     }
 
+    //both this and the method below were never used but were going to be important for other parts of the game
     String returnLine (int lineNumber) { //returnerar värdet vid en line av en fil
 
         try{
@@ -121,6 +127,7 @@ public class FileMaster {
 
     }
 
+    //print an entire paragraph. Useful for displaying art stored in .txt documents
     void printParagraph(int paragraphNum) {
 
         try{
@@ -151,12 +158,14 @@ public class FileMaster {
 
     }
 
+    //gets the starting row of a specific paragraph
     int getParagraphRow(int paragraphNum) { // Paragraf 0 är första paragrafen. Returnerar vilken linje en paragraph (x) börjar på
 
         try{
             Scanner fileReader = new Scanner(this.file);
             int rowNum = 0;
 
+            //starts the inner loop (paragraphNum) times, that loop only exits on new paragraphs.
             for (int i = 0; i < paragraphNum; i++) {
 
                 while (true) {
@@ -182,6 +191,7 @@ public class FileMaster {
 
     }
 
+    //skips all lines in a document up until the desired line.
     void skipLines(Scanner scanner, int lines) {
 
         for (int i = 0; i < lines; i++) {
