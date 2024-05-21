@@ -1,14 +1,12 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.function.Function;
-
 import Input.*;
 
 //The object builder class is used to create objects from data stored in files by using the file-master class.
-
 public class ObjectBuilder {
 
-    final static int PARAGRAPH_SKIP = 1;
+    private final int PARAGRAPH_SKIP = 1;
 
     public ObjectBuilder() {}
 
@@ -20,7 +18,7 @@ public class ObjectBuilder {
         ArrayList<String> currentData;
 
         int paragraphCount = fileMaster.getFileParagraphCount();
-        for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
+        for (int i = this.PARAGRAPH_SKIP; i < paragraphCount; i++) {
             currentData = fileMaster.returnParagraphStringList(i);
             data.add(parseFunction.apply(currentData));
         }

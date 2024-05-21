@@ -8,9 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 //The "main" class of the game, handles almost everything about the current game state.
-
 public class Game {
-    private final InputMaster input = new InputMaster();
     private Team team;
     private ArrayList<Character> allCharacters;
     private ArrayList<Weapon> allWeapons;
@@ -34,12 +32,19 @@ public class Game {
 
     }
 
+    //getByName is a generic method that takes in an arraylist of any type and checks each "name" field.
+    //this is very useful in order to get something of a specific name from an arraylist because almost all of my data that is often accessed has a "name".
+    //extra explanation in method as it is more complicated
     public static <T> T getByName(ArrayList<T> list, String name) {
+        //loops through all items in the list.
         for (T obj : list) {
             try {
+                //gets the class and sets name field to null
                 Class<?> currentClass = obj.getClass();
                 Field nameField = null;
 
+                //this checks if there is a name field and if there isn't it checks its Superclass for a name field as some names are stored in the superclass,
+                //this repeats until all superclasses are checked
                 while (currentClass != null) {
                     try {
                         nameField = currentClass.getDeclaredField("name");
@@ -49,24 +54,30 @@ public class Game {
                     }
                 }
 
+                //checks if name field has changed from null, if it has this sets object name to the name-field of the input item.
                 if (nameField != null) {
                     nameField.setAccessible(true);
                     String objName = (String) nameField.get(obj);
 
+                    //if the name matches with the target name it returns the current item.
                     if (objName.equals(name)) {
                         return obj;
                     }
                 } else {
+                    //if not it prints this message.
                     System.out.println("This item or its parent classes do not have a \"name\" field");
                 }
             } catch (IllegalAccessException e) {
+                //if the name field is inaccessible for some reason
                 System.out.println("Cannot access field \"name\" in this item");
             }
         }
+        //if it loops through the whole list without finding an item with the input name
         System.out.println("There is no object with the name \"" + name + "\" in the input list");
         return null;
     }
 
+    //Starts the real game, currently very bad because the game is not finished. It should not be this hardcoded.
     void startGame() {
 
         System.out.println("Welcome to \"Escape the motherland\"");
@@ -89,6 +100,7 @@ public class Game {
 
     }
 
+    //reduces distance left until game is won and generates a new event.
     private void nextGameEvent() {
 
        reduceDistance();
@@ -97,13 +109,15 @@ public class Game {
 
     }
 
+    //generates a new event, only fight because it is the only event
     private void generateEvent() {
         Random rnd = new Random();
-        int size = rnd.nextInt(4, 9);
+        int mapSize = rnd.nextInt(4, 9);
         int enemyCount = rnd.nextInt(1, 7);
 
         ArrayList<Enemy> enemies = new ArrayList<>();
 
+        //adds new enemies and prints their names, this code is to get the code working mostly and not a finished product.
         for (int i = 0; i < enemyCount; i++) {
             int enemyIndex = rnd.nextInt(0, this.allEnemies.size());
             enemies.add(new Enemy (allEnemies.get(enemyIndex)));
@@ -118,18 +132,19 @@ public class Game {
         System.out.println();
         System.out.println("You still have " + distanceLeft + " meters left");
 
-        Fight fight = new Fight(enemies, this.team.getTeamMembers(), size);
+        Fight fight = new Fight(enemies, this.team.getTeamMembers(), mapSize);
         this.team.setTeam(fight.getCharacters());
 
     }
 
+    //this method is used to calculate the distance to an event
     private void reduceDistance() {
 
-        final double K = 0.00000000046053; //nummer uträknat för att få rätt distance för input
-        double dist = 100000; //hur många meter man behöver flyttas för att nå 99% säkerhet för att ha nått ett event
+        final double K = 0.00000000046053; //number to get the correct distance for input
+        double dist = 100000; //how many meters you have to travel to reach a 99% certainty in having reached an event
 
         double random = Math.random();
-        double distance = Math.log((-1)/(random - 1))/Math.log(1 + dist * K);
+        double distance = Math.log((-1)/(random - 1))/Math.log(1 + dist * K);//equation to get distance, longer distances are rarer but as it is very close in rarity to get a "long" distance and a "very long" distance.
 
         System.out.print("After " + distance + " meters traveled, you encounter a ");
 

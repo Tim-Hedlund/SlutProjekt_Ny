@@ -1,3 +1,4 @@
+//ranged weapon type class, has all the data that is specific for ranged weapons.
 public class Ranged extends Weapon {
     private float aimMultiplier;
     private float accuracyLossPerRange;

@@ -1,5 +1,6 @@
+//melee weapon type class, has all the data that is specific for melee weapons.
 public class Melee extends Weapon {
-    //melee weapon type class.
+
 
     private final float techniqueMultiplier;
     private final float strengthMultiplier;

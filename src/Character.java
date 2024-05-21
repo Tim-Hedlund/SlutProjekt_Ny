@@ -1,4 +1,3 @@
-
 //character class, each team member is a character
 public class Character {
     private String name;

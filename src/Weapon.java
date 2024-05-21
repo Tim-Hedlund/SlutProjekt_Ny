@@ -1,3 +1,4 @@
+//Weapon abstract class, there are no weapons as all weapons are either melee or ranged, has the data any weapon-type would need
 public abstract class Weapon {
     private String name;
     private int damagePerShot;

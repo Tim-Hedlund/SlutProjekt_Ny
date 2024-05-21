@@ -1,6 +1,5 @@
 //class used for each enemy. Work similar to characters but only for fights and have set values instead of equipped items.
 public class Enemy {
-
     private final String name;
     private final int meleePower;
     private final int rangedPower;

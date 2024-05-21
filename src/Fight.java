@@ -6,7 +6,7 @@ public class Fight {
 
     private ArrayList<Fighter<Enemy>> enemies = new ArrayList<>();
     private ArrayList<Fighter<Character>> characters = new ArrayList<>();
-    private int size;
+    private final int size;
     private final double TARGET_ACCURACY = 0.5;
 
     //prepares the fight, prepares the arraylists for characters and enemies and turns them into the

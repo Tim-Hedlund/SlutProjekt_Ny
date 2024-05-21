@@ -1,10 +1,10 @@
-public class Armor {
 //the armor class, each character can equip an armor that makes them more resilient.
-    String name;
-    int flatDamageReduction; //applied first, before percentage reduction
-    float percentDamageReduction; //applied last, after flat reduction
-    float reductionChance;
-    float critReductionChance;
+public class Armor {
+    public String name;
+    public int flatDamageReduction; //applied first, before percentage reduction
+    public float percentDamageReduction; //applied last, after flat reduction
+    public float reductionChance;
+    public float critReductionChance;
 
     //Constructor för Armor
     public Armor(String name, int flatDamageReduction, float percentDamageReduction, float reductionChance, float critReductionChance) {
@@ -13,7 +13,5 @@ public class Armor {
         this.percentDamageReduction = percentDamageReduction;
         this.reductionChance = reductionChance;
         this.critReductionChance = critReductionChance;
-
-
     }
 }

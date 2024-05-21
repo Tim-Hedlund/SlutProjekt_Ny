@@ -3,11 +3,11 @@ import java.util.ArrayList;
 
 public abstract class Event {
 
-    ArrayList<Character> affectedCharacters;
-    ArrayList<String> eventText;
-    //ArrayList<float> hpChangePerCharacter;
-    ArrayList<Armor> armorLoot;
-    ArrayList<Weapon> weaponLoot;
+    private ArrayList<Character> affectedCharacters;
+    private ArrayList<String> eventText;
+    private ArrayList<float> hpChangePerCharacter;
+    private ArrayList<Armor> armorLoot;
+    private ArrayList<Weapon> weaponLoot;
 
 
 }
