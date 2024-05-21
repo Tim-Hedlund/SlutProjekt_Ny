@@ -17,7 +17,7 @@ public class Game {
     double distanceLeft = 200000;
 
     //the method that starts the game, loads all items, characters and enemies here to be used later
-    Game () {
+    public Game () {
 
         this.team = new Team();
 

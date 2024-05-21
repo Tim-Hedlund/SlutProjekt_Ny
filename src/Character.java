@@ -22,7 +22,7 @@ public class Character {
     private float currentHunger;
 
     //Default constructor
-    Character (String name, String description, int maxHealth, int strength, int technique, int aim, int hunger, Weapon weapon, Armor armor) {
+    public Character (String name, String description, int maxHealth, int strength, int technique, int aim, int hunger, Weapon weapon, Armor armor) {
 
         this.name = name;
         this.description = description;

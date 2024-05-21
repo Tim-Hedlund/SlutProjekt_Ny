@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Färdigkommenterat min kod">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Färdigkommenterat min kod på riktigt">
+      <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SessionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +76,7 @@
       <workItem from="1714977056355" duration="2284000" />
       <workItem from="1715155022861" duration="187000" />
       <workItem from="1715880934281" duration="2858000" />
-      <workItem from="1716229293747" duration="8060000" />
+      <workItem from="1716229293747" duration="8376000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -208,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716316981856</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Färdigkommenterat min kod på riktigt">
+      <created>1716318004405</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716318004405</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +243,7 @@
     <MESSAGE value="Fighter och lite mer klart" />
     <MESSAGE value="Nästan alla kommentarer klara" />
     <MESSAGE value="Färdigkommenterat min kod" />
-    <option name="LAST_COMMIT_MESSAGE" value="Färdigkommenterat min kod" />
+    <MESSAGE value="Färdigkommenterat min kod på riktigt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Färdigkommenterat min kod på riktigt" />
   </component>
 </project>
