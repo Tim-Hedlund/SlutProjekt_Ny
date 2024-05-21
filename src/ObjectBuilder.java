@@ -1,5 +1,4 @@
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.function.Function;
 
@@ -9,14 +8,15 @@ public class ObjectBuilder {
 
     final static int PARAGRAPH_SKIP = 1;
 
+    public ObjectBuilder() {}
 
-
-    ObjectBuilder() {}
-
+    //generic method for loading data, converts each paragraph using the provided parse function.
     public <T> ArrayList<T> loadData(File file, Function<ArrayList<String>, T> parseFunction) {
+
         FileMaster fileMaster = new FileMaster(file);
         ArrayList<T> data = new ArrayList<>();
         ArrayList<String> currentData;
+
         int paragraphCount = fileMaster.getFileParagraphCount();
         for (int i = PARAGRAPH_SKIP; i < paragraphCount; i++) {
             currentData = fileMaster.returnParagraphStringList(i);
@@ -25,25 +25,28 @@ public class ObjectBuilder {
         return data;
     }
 
-
+    //returns all enemies from the enemy file using the loadData method.
     ArrayList<Enemy> returnEnemies() {
         File enemyFile = new File("src/objectFileEnemy.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(enemyFile, data -> returnSingleEnemy(data, inputChecker));
     }
 
+    //returns all armors from the armor file using the loadData method.
     ArrayList<Armor> returnArmors() {
         File armorFile = new File("src/objectFileArmor.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(armorFile, data -> returnSingleArmor(data, inputChecker));
     }
 
+    //returns all characters from the character file using the loadData method.
     ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
         File armorFile = new File("src/objectFileCharacter.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(armorFile, data -> returnSingleCharacter(data, inputChecker, allWeapons, allArmors));
     }
 
+    //returns all weapons from the weapon file using the loadData method, adds all weapon types to the same return list.
     ArrayList<Weapon> returnWeapons() {
 
         File weaponFileMelee = new File("src/objectFileWeaponMelee.txt");
@@ -57,6 +60,7 @@ public class ObjectBuilder {
 
     }
 
+    //returns a single enemy from the String ArrayList
     private Enemy returnSingleEnemy(ArrayList<String> currentEnemyData, InputChecker inputChecker) {
 
         if (currentEnemyData.size() == 5) {
@@ -84,6 +88,7 @@ public class ObjectBuilder {
 
     }
 
+    //returns a single armor from the String ArrayList
     private Armor returnSingleArmor(ArrayList<String> currentArmorData, InputChecker inputChecker) {
 
         if (currentArmorData.size() == 5) {
@@ -111,6 +116,7 @@ public class ObjectBuilder {
 
     }
 
+    //returns a single weapons data from the String ArrayList, if is ranged it uses the ranged method otherwise it uses the melee method.
     private Weapon returnSingleWeapon(ArrayList<String> currentWeaponData, InputChecker inputChecker, boolean isRanged) {
 
         if (currentWeaponData.size() == 8) {
@@ -148,6 +154,7 @@ public class ObjectBuilder {
 
     }
 
+    //returns a single rangedWeapon from the data provided by the returnSingleWeapon method and the String Arraylist
     private Weapon returnSingleRangedWeapon(String name, int damagePerShot, int shots, float critMultiplier, float critChance, ArrayList<String> currentWeaponData, InputChecker inputChecker) {
 
         String aimMultiplierString = currentWeaponData.get(5);
@@ -162,6 +169,7 @@ public class ObjectBuilder {
 
     }
 
+    //returns a single melee from the data provided by the returnSingleWeapon method and the String Arraylist
     private Weapon returnSingleMeleeWeapon(String name, int damagePerShot, int shots, float critMultiplier, float critChance, ArrayList<String> currentWeaponData, InputChecker inputChecker) {
 
         String techniqueMultiplierString = currentWeaponData.get(5);
@@ -176,6 +184,7 @@ public class ObjectBuilder {
 
     }
 
+    //returns a single character from the String ArrayList
     Character returnSingleCharacter(ArrayList<String> currentCharacterData, InputChecker inputChecker, ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
 
         if (currentCharacterData.size() == 9) {

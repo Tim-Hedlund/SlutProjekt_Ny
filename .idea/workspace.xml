@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Fixade några buggar och börjat kommentera">
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Hela Fight och File master classen kommenterad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +74,8 @@
       <workItem from="1714068293300" duration="6701000" />
       <workItem from="1714977056355" duration="2284000" />
       <workItem from="1715155022861" duration="187000" />
+      <workItem from="1715880934281" duration="2858000" />
+      <workItem from="1716229293747" duration="3002000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -171,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1714376249323</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Hela Fight classen kommenterad">
+      <created>1715881320565</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715881320565</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Hela Fight och File master classen kommenterad">
+      <created>1715881919545</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715881919545</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +209,8 @@
     <MESSAGE value="De viktigaste delarna av spelet fungerar, mer tid skulle vara fantastiskt men jag har en fungerande produkt. Ska fixa lite mer med UIn för att det ska vara lättare att förstå vad som händer" />
     <MESSAGE value="Så klar som jag kommer bli, med mer tid skulle jag kunna skapa ett spel som faktiskt skulle vara rätt roligt" />
     <MESSAGE value="Fixade några buggar och börjat kommentera" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixade några buggar och börjat kommentera" />
+    <MESSAGE value="Hela Fight classen kommenterad" />
+    <MESSAGE value="Hela Fight och File master classen kommenterad" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hela Fight och File master classen kommenterad" />
   </component>
 </project>

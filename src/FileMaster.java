@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileMaster {
-    File file;
+    private final File file;
 
     //File master constructor, sets the "file" to input file
     FileMaster(File file) {
