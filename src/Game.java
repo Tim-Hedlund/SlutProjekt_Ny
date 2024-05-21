@@ -14,7 +14,7 @@ public class Game {
     private ArrayList<Weapon> allWeapons;
     private ArrayList<Armor> allArmors;
     private ArrayList<Enemy> allEnemies;
-    double distanceLeft = 200000;
+    private double distanceLeft = 200000;
 
     //the method that starts the game, loads all items, characters and enemies here to be used later
     public Game () {
@@ -78,7 +78,7 @@ public class Game {
     }
 
     //Starts the real game, currently very bad because the game is not finished. It should not be this hardcoded.
-    void startGame() {
+    private void startGame() {
 
         System.out.println("Welcome to \"Escape the motherland\"");
         System.out.println("Press enter to continue:");

@@ -2,7 +2,7 @@
 public class SessionController {
     private final Game currentGame;
 
-    SessionController(){
+    public SessionController(){
 
         this.currentGame = new Game();
 

@@ -27,7 +27,7 @@ public class Enemy {
     }
 
     //checks if the enemy has negative or zero health
-    boolean isDead() {
+    public boolean isDead() {
 
         return this.health <= 0;
 
