@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Nästan alla kommentarer klara">
+    <list default="true" id="2c773daa-70ca-44e6-8a87-1436aa10312b" name="Changes" comment="Färdigkommenterat min kod">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Attack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fighter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input/InputMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/InputMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Melee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Melee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ranged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ranged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +73,7 @@
       <workItem from="1714977056355" duration="2284000" />
       <workItem from="1715155022861" duration="187000" />
       <workItem from="1715880934281" duration="2858000" />
-      <workItem from="1716229293747" duration="7005000" />
+      <workItem from="1716229293747" duration="8060000" />
     </task>
     <task id="LOCAL-00001" summary="Layed out start of many classes and implemented an input checking system">
       <created>1710748120166</created>
@@ -215,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716306435103</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Färdigkommenterat min kod">
+      <created>1716316981856</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716316981856</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +232,7 @@
     <MESSAGE value="Hela Fight och File master classen kommenterad" />
     <MESSAGE value="Fighter och lite mer klart" />
     <MESSAGE value="Nästan alla kommentarer klara" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nästan alla kommentarer klara" />
+    <MESSAGE value="Färdigkommenterat min kod" />
+    <option name="LAST_COMMIT_MESSAGE" value="Färdigkommenterat min kod" />
   </component>
 </project>

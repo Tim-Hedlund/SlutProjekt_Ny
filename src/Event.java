@@ -5,7 +5,7 @@ public abstract class Event {
 
     private ArrayList<Character> affectedCharacters;
     private ArrayList<String> eventText;
-    private ArrayList<float> hpChangePerCharacter;
+    private ArrayList<Float> hpChangePerCharacter;
     private ArrayList<Armor> armorLoot;
     private ArrayList<Weapon> weaponLoot;
 
