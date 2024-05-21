@@ -8,12 +8,12 @@ public class FileMaster {
     private final File file;
 
     //File master constructor, sets the "file" to input file
-    FileMaster(File file) {
+    public FileMaster(File file) {
         this.file = file;
     }
 
     //Returns an arraylist of Strings when scanning a document, Only returns one paragraph at a time as the list.
-    ArrayList<String> returnParagraphStringList (int paragraphNum) {
+    public ArrayList<String> returnParagraphStringList (int paragraphNum) {
 
         ArrayList<String> returnList = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class FileMaster {
     }
 
     //Gets how many paragraphs are in a document
-    int getFileParagraphCount() {
+    public int getFileParagraphCount() {
         try {
             Scanner fileReader = new Scanner(this.file);
 
@@ -100,7 +100,7 @@ public class FileMaster {
     }
 
     //both this and the method below were never used but were going to be important for other parts of the game
-    String returnLine (int lineNumber) { //returnerar värdet vid en line av en fil
+    public String returnLine (int lineNumber) { //returnerar värdet vid en line av en fil
 
         try{
             Scanner fileReader = new Scanner(this.file);
@@ -129,7 +129,7 @@ public class FileMaster {
     }
 
     //print an entire paragraph. Useful for displaying art stored in .txt documents
-    void printParagraph(int paragraphNum) {
+    public void printParagraph(int paragraphNum) {
 
         try{
             Scanner fileReader = new Scanner(this.file);
@@ -160,7 +160,7 @@ public class FileMaster {
     }
 
     //gets the starting row of a specific paragraph
-    int getParagraphRow(int paragraphNum) { // Paragraf 0 är första paragrafen. Returnerar vilken linje en paragraph (x) börjar på
+    public int getParagraphRow(int paragraphNum) { // Paragraf 0 är första paragrafen. Returnerar vilken linje en paragraph (x) börjar på
 
         try{
             Scanner fileReader = new Scanner(this.file);
@@ -193,7 +193,7 @@ public class FileMaster {
     }
 
     //skips all lines in a document up until the desired line.
-    void skipLines(Scanner scanner, int lines) {
+    public void skipLines(Scanner scanner, int lines) {
 
         for (int i = 0; i < lines; i++) {
             scanner.nextLine();

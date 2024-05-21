@@ -26,28 +26,28 @@ public class ObjectBuilder {
     }
 
     //returns all enemies from the enemy file using the loadData method.
-    ArrayList<Enemy> returnEnemies() {
+    public ArrayList<Enemy> returnEnemies() {
         File enemyFile = new File("src/objectFileEnemy.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(enemyFile, data -> returnSingleEnemy(data, inputChecker));
     }
 
     //returns all armors from the armor file using the loadData method.
-    ArrayList<Armor> returnArmors() {
+    public ArrayList<Armor> returnArmors() {
         File armorFile = new File("src/objectFileArmor.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(armorFile, data -> returnSingleArmor(data, inputChecker));
     }
 
     //returns all characters from the character file using the loadData method.
-    ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
+    public ArrayList<Character> returnCharacters(ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
         File armorFile = new File("src/objectFileCharacter.txt");
         InputChecker inputChecker = new InputChecker();
         return loadData(armorFile, data -> returnSingleCharacter(data, inputChecker, allWeapons, allArmors));
     }
 
     //returns all weapons from the weapon file using the loadData method, adds all weapon types to the same return list.
-    ArrayList<Weapon> returnWeapons() {
+    public ArrayList<Weapon> returnWeapons() {
 
         File weaponFileMelee = new File("src/objectFileWeaponMelee.txt");
         InputChecker inputChecker = new InputChecker();
@@ -185,7 +185,7 @@ public class ObjectBuilder {
     }
 
     //returns a single character from the String ArrayList
-    Character returnSingleCharacter(ArrayList<String> currentCharacterData, InputChecker inputChecker, ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
+    private Character returnSingleCharacter(ArrayList<String> currentCharacterData, InputChecker inputChecker, ArrayList<Weapon> allWeapons, ArrayList<Armor> allArmors) {
 
         if (currentCharacterData.size() == 9) {
 

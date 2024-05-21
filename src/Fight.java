@@ -165,7 +165,7 @@ public class Fight {
     }
 
     //The enemy choses their move based on their
-    void choseEnemyMove(Fighter<Enemy> checker) {
+    private void choseEnemyMove(Fighter<Enemy> checker) {
 
         Fighter<Character> targetCharacter = this.characters.get(getShortestCharacterDistanceIndex(checker));
 
@@ -267,7 +267,7 @@ public class Fight {
     }
 
     //Gets the shortest distance from inputted enemy to character
-    int getShortestCharacterDistanceIndex(Fighter<Enemy> checker) {
+    private int getShortestCharacterDistanceIndex(Fighter<Enemy> checker) {
 
         int pos = checker.position;
 
@@ -287,7 +287,7 @@ public class Fight {
     }
 
     //Gets the shortest distance from inputted character to enemy
-    int getShortestEnemyDistanceIndex(Fighter<Character> checker) {
+    private int getShortestEnemyDistanceIndex(Fighter<Character> checker) {
 
         int pos = checker.position;
 
