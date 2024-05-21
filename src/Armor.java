@@ -1,8 +1,8 @@
 public class Armor {
-
+//the armor class, each character can equip an armor that makes them more resilient.
     String name;
-    int flatDamageReduction;
-    float percentDamageReduction;
+    int flatDamageReduction; //applied first, before percentage reduction
+    float percentDamageReduction; //applied last, after flat reduction
     float reductionChance;
     float critReductionChance;
 

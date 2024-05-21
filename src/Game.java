@@ -7,6 +7,8 @@ import java.math.*;
 import java.util.Random;
 import java.util.Scanner;
 
+//The "main" class of the game, handles almost everything about the current game state.
+
 public class Game {
     private final InputMaster input = new InputMaster();
     private Team team;
@@ -16,6 +18,7 @@ public class Game {
     private ArrayList<Enemy> allEnemies;
     double distanceLeft = 200000;
 
+    //the method that starts the game, loads all items, characters and enemies here to be used later
     Game () {
 
         this.team = new Team();

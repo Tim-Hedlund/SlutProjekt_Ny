@@ -1,6 +1,5 @@
 public class Fighter<T>{
-
-    //takes in any value and gives it an integer position, used in fights.
+    //Fighter class. Takes in any value and gives it an integer position, used in fights.
     public T obj;
     public int position;
 

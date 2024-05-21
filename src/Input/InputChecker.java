@@ -1,10 +1,12 @@
 package Input;
 
+//used to check inputs without having to code a try catch with error messages each time.
 public class InputChecker {
 
     public InputChecker() {}
 
-    public int toInt (String input) { //input checker för integers, returnerar -1 när den inte är integer
+    //input checker for integers, tries to parse, if it fails it returns -1
+    public int toInt (String input) {
         int intInput;
 
         try {
@@ -20,6 +22,7 @@ public class InputChecker {
 
     }
 
+    //input checker for floats, tries to parse, if it fails it returns -1
     public float toFloat (String input) {
         float floatInput;
 
@@ -34,9 +37,7 @@ public class InputChecker {
 
         return  floatInput;
 
-
     }
-
 
 }
 

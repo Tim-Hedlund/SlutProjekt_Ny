@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//The File Master class is the class that handles everything related to files. Was supposed to be used to write to files to save the game state as well.
 public class FileMaster {
     private final File file;
 

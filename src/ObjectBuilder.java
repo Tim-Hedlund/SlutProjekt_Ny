@@ -4,6 +4,8 @@ import java.util.function.Function;
 
 import Input.*;
 
+//The object builder class is used to create objects from data stored in files by using the file-master class.
+
 public class ObjectBuilder {
 
     final static int PARAGRAPH_SKIP = 1;

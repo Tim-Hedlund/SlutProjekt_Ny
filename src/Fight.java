@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+//fight class used for each fight the team encounter. A fight continues until one side is dead. Supposed to be part of the event system and attack class.
 public class Fight {
 
     private ArrayList<Fighter<Enemy>> enemies = new ArrayList<>();

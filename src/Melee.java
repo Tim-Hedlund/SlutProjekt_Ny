@@ -1,4 +1,5 @@
 public class Melee extends Weapon {
+    //melee weapon type class.
 
     private final float techniqueMultiplier;
     private final float strengthMultiplier;

@@ -1,7 +1,7 @@
 package Input;
-
 import java.util.Scanner;
 
+//Class used to take input and uses the input checker to check, dont use this one just use input checker instead.
 public class InputMaster {
 
     public InputMaster() {}

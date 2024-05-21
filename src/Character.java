@@ -1,5 +1,5 @@
-import java.lang.annotation.Target;
 
+//character class, each team member is a character
 public class Character {
     private String name;
     private String description;
@@ -80,7 +80,7 @@ public class Character {
         return this.weapon;
     }
 
-    //returns ranged weapon accuracy
+    //returns ranged weapon accuracy for a distance, shorter distance and higher aim means higher hit chance
     public double getAccuracy(int distance) {
 
         if (!(this.weapon instanceof Ranged)) {
